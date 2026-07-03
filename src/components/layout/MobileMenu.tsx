@@ -43,13 +43,14 @@ export default function MobileMenu({ navItems, ctaText, ctaUrl }: MobileMenuProp
 
       {/* Drawer Overlay */}
       {isOpen && (
-        <div className="fixed inset-0 z-[105] bg-[#0b1f1c]/95 backdrop-blur-md flex flex-col justify-center items-center gap-8 px-6">
-          {navItems.map((link) => (
+        <div className="fixed inset-0 z-[105] bg-[#0b1f1c]/95 backdrop-blur-md flex flex-col justify-center items-center gap-8 px-6 animate-drawer-in">
+          {navItems.map((link, i) => (
             <a
               key={link.label}
               href={link.url}
               onClick={() => setIsOpen(false)}
-              className="text-lg font-medium tracking-[0.15em] uppercase text-[#b8924a] hover:text-white transition-colors"
+              className="text-lg font-medium tracking-[0.15em] uppercase text-[#b8924a] hover:text-white transition-colors animate-drawer-item"
+              style={{ animationDelay: `${i * 60 + 80}ms` }}
             >
               {link.label}
             </a>
@@ -57,7 +58,8 @@ export default function MobileMenu({ navItems, ctaText, ctaUrl }: MobileMenuProp
           <a
             href={ctaUrl}
             onClick={() => setIsOpen(false)}
-            className="bg-[#b8924a] text-[#0b1f1c] text-sm font-semibold tracking-[0.1em] uppercase px-8 py-3.5 rounded-[2px] hover:bg-white hover:text-[#0b1f1c] transition-colors mt-4"
+            className="bg-[#b8924a] text-[#0b1f1c] text-sm font-semibold tracking-[0.1em] uppercase px-8 py-3.5 rounded-[2px] hover:bg-white hover:text-[#0b1f1c] hover:scale-[1.05] active:scale-[0.96] transition-all duration-300 mt-4 animate-drawer-item"
+            style={{ animationDelay: `${navItems.length * 60 + 80}ms` }}
           >
             {ctaText}
           </a>

@@ -54,3 +54,32 @@ body {
   background: var(--gold);
   border-radius: 2px 0 0 2px;
 }
+
+/* Mobile nav drawer entrance */
+@keyframes drawer-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes drawer-item-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-drawer-in {
+  animation: drawer-in 250ms ease-out both;
+}
+
+.animate-drawer-item {
+  animation: drawer-item-in 400ms ease-out both;
+}

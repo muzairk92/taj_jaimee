@@ -77,7 +77,7 @@ export default async function Nav() {
           ))}
           <a
             href={ctaUrl}
-            className="bg-[#b8924a] text-[#0b1f1c] text-xs font-semibold tracking-[0.1em] uppercase px-5 py-2.5 rounded-[2px] hover:bg-white hover:text-[#0b1f1c] transition-colors whitespace-nowrap"
+            className="bg-[#b8924a] text-[#0b1f1c] text-xs font-semibold tracking-[0.1em] uppercase px-5 py-2.5 rounded-[2px] hover:bg-white hover:text-[#0b1f1c] hover:scale-[1.05] active:scale-[0.96] transition-all duration-300 whitespace-nowrap"
           >
             {ctaText}
           </a>

@@ -1,4 +1,5 @@
 import Container from "@/components/ui/Container";
+import Reveal from "@/components/ui/Reveal";
 
 interface PartnerItem {
   logo?: { node?: { sourceUrl?: string; altText?: string } };
@@ -14,15 +15,9 @@ interface PartnerEcosystemData {
   buttonUrl?: string;
 }
 
-function PartnerCard({ partner }: { partner: PartnerItem }) {
+function PartnerCardContent({ partner }: { partner: PartnerItem }) {
   return (
-    <div
-      className="rounded-[6px] px-4 py-6 text-center flex flex-col items-center gap-3 hover:bg-[rgba(240,235,224,0.1)] transition-colors cursor-default"
-      style={{
-        background: "rgba(240,235,224,0.05)",
-        border: "1px solid rgba(240,235,224,0.12)",
-      }}
-    >
+    <>
       {partner.logo?.node?.sourceUrl ? (
         <img
           src={partner.logo.node.sourceUrl}
@@ -38,11 +33,11 @@ function PartnerCard({ partner }: { partner: PartnerItem }) {
         </div>
       )}
       {partner.name && (
-        <span className="text-sm font-medium text-[rgba(240,235,224,0.85)] text-center leading-[1.4]">
+        <span className="text-[14px] font-medium text-[rgba(240,235,224,0.85)] text-center leading-[1.4]">
           {partner.name}
         </span>
       )}
-    </div>
+    </>
   );
 }
 
@@ -57,30 +52,50 @@ export default function PartnersSection({ data }: { data: PartnerEcosystemData |
   return (
     <section id="partners" style={{ background: "var(--forest)" }}>
       <Container className="py-20 max-[900px]:py-14">
-        {data.eyebrowText && (
-          <p className="text-[11px] tracking-[0.22em] uppercase text-[#b8924a] mb-3 text-center font-medium">
-            {data.eyebrowText}
-          </p>
-        )}
-        {data.heading && (
-          <h2 className="font-playfair text-[32px] font-normal text-[#f0ebe0] text-center leading-[1.2] mb-3">
-            {data.heading}
-          </h2>
-        )}
-        {data.description && (
-          <p className="text-[15px] font-light text-[rgba(240,235,224,0.55)] text-center leading-[1.8] max-w-[600px] mx-auto mb-12">
-            {data.description}
-          </p>
-        )}
+        <Reveal>
+          {data.eyebrowText && (
+            <p className="text-[11px] tracking-[0.22em] uppercase text-[#b8924a] mb-3 text-center font-medium">
+              {data.eyebrowText}
+            </p>
+          )}
+          {data.heading && (
+            <h2 className="font-playfair text-[32px] font-semibold text-[#f0ebe0] text-center leading-[1.2] mb-3">
+              {data.heading}
+            </h2>
+          )}
+          {data.description && (
+            <p className="text-[14px] font-normal text-[rgba(240,235,224,0.55)] text-center leading-[1.8] max-w-[600px] mx-auto mb-12">
+              {data.description}
+            </p>
+          )}
+        </Reveal>
 
         {row1.length > 0 && (
           <div className="grid gap-4 mb-4" style={{ gridTemplateColumns: `repeat(${row1.length}, 1fr)` }}>
-            {row1.map((p, i) => <PartnerCard key={i} partner={p} />)}
+            {row1.map((p, i) => (
+              <Reveal
+                key={i}
+                delay={i * 70}
+                className="rounded-[6px] px-4 py-6 text-center flex flex-col items-center gap-3 hover:bg-[rgba(240,235,224,0.1)] hover:-translate-y-1 cursor-default"
+                style={{ background: "rgba(240,235,224,0.05)", border: "1px solid rgba(240,235,224,0.12)" }}
+              >
+                <PartnerCardContent partner={p} />
+              </Reveal>
+            ))}
           </div>
         )}
         {row2.length > 0 && (
           <div className="grid gap-4" style={{ gridTemplateColumns: `repeat(${row2.length}, 1fr)` }}>
-            {row2.map((p, i) => <PartnerCard key={i} partner={p} />)}
+            {row2.map((p, i) => (
+              <Reveal
+                key={i}
+                delay={i * 70}
+                className="rounded-[6px] px-4 py-6 text-center flex flex-col items-center gap-3 hover:bg-[rgba(240,235,224,0.1)] hover:-translate-y-1 cursor-default"
+                style={{ background: "rgba(240,235,224,0.05)", border: "1px solid rgba(240,235,224,0.12)" }}
+              >
+                <PartnerCardContent partner={p} />
+              </Reveal>
+            ))}
           </div>
         )}
 
@@ -88,7 +103,7 @@ export default function PartnersSection({ data }: { data: PartnerEcosystemData |
           <div className="text-center mt-10">
             <a
               href={data.buttonUrl}
-              className="border-2 border-[#b8924a] text-[#b8924a] text-sm font-semibold tracking-[0.1em] uppercase px-8 py-3.5 rounded-[2px] inline-block hover:bg-[#b8924a] hover:text-[#0b1f1c] transition-all"
+              className="border-2 border-[#b8924a] text-[#b8924a] text-sm font-semibold tracking-[0.1em] uppercase px-8 py-3.5 rounded-[2px] inline-block hover:bg-[#b8924a] hover:text-[#0b1f1c] hover:scale-[1.04] active:scale-[0.97] transition-all duration-300"
             >
               {data.buttonText} →
             </a>

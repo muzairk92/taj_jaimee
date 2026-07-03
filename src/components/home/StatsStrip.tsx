@@ -1,4 +1,5 @@
 import Container from "@/components/ui/Container";
+import Reveal from "@/components/ui/Reveal";
 
 interface StatsBarData {
   stats?: { number: string; label: string }[];
@@ -13,17 +14,18 @@ export default function StatsStrip({ data }: { data: StatsBarData | null }) {
       <Container className="py-10 max-[900px]:py-8">
         <div className="grid grid-cols-5 max-[900px]:grid-cols-3 max-[640px]:grid-cols-2">
           {stats.map((stat, i) => (
-            <div
+            <Reveal
               key={i}
+              delay={i * 80}
               className="text-center px-4 border-r border-[rgba(240,235,224,0.08)] last:border-r-0 max-[900px]:py-4"
             >
-              <div className="font-playfair text-[34px] font-normal text-[#d4b06a] leading-none mb-2">
+              <div className="font-playfair text-[34px] font-semibold text-[#d4b06a] leading-none mb-2">
                 {stat.number}
               </div>
-              <div className="text-[12px] font-light text-[rgba(240,235,224,0.6)] leading-[1.6]">
+              <div className="text-[12px] font-normal text-[rgba(240,235,224,0.6)] leading-[1.6]">
                 {stat.label}
               </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </Container>

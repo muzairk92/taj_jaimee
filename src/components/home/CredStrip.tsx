@@ -1,4 +1,5 @@
 import Container from "@/components/ui/Container";
+import Reveal from "@/components/ui/Reveal";
 
 interface AwardItem {
   icon?: { node?: { sourceUrl?: string; altText?: string } };
@@ -19,7 +20,7 @@ export default function CredStrip({ data }: { data: AwardsBarData | null }) {
       <Container className="py-8">
         <div className="flex items-center justify-center gap-10 flex-wrap max-[900px]:flex-col max-[900px]:items-start max-[900px]:gap-6">
           {awards.map((award, i) => (
-            <span key={i} className="flex items-center">
+            <Reveal key={i} delay={i * 80} className="flex items-center">
               <div className="flex items-center gap-4">
                 <div className="w-10 h-10 border border-[#b8924a] rounded-[2px] flex items-center justify-center shrink-0 overflow-hidden">
                   {award.icon?.node?.sourceUrl ? (
@@ -37,7 +38,7 @@ export default function CredStrip({ data }: { data: AwardsBarData | null }) {
                     <span className="block text-sm font-semibold text-[#3a2e28] mb-0.5">{award.title}</span>
                   )}
                   {award.subtitle && (
-                    <span className="block text-xs font-light text-[#7b6b5a] leading-[1.5] max-w-[200px]">
+                    <span className="block text-xs font-normal text-[#7b6b5a] leading-[1.5] max-w-[200px]">
                       {award.subtitle}
                     </span>
                   )}
@@ -46,7 +47,7 @@ export default function CredStrip({ data }: { data: AwardsBarData | null }) {
               {i < awards.length - 1 && (
                 <div className="w-px h-10 bg-[#c8b8a2] mx-10 shrink-0 max-[900px]:hidden" />
               )}
-            </span>
+            </Reveal>
           ))}
         </div>
       </Container>

@@ -1,3 +1,5 @@
+import Reveal from "@/components/ui/Reveal";
+
 export interface HeroData {
   eyebrowText?: string;
   heading?: string;
@@ -73,14 +75,14 @@ export default function HeroSection({ data }: { data: HeroData | null }) {
       </div>
 
       {/* Left — content */}
-      <div className="px-16 py-20 flex flex-col justify-center relative z-[2] w-full max-w-[60%] max-[1280px]:px-12 max-[900px]:px-6 max-[900px]:max-w-full max-[900px]:pt-24 max-[900px]:pb-20">
+      <Reveal className="px-16 py-20 flex flex-col justify-center relative z-[2] w-full max-w-[60%] max-[1280px]:px-12 max-[900px]:px-6 max-[900px]:max-w-full max-[900px]:pt-24 max-[900px]:pb-20">
         {data.eyebrowText && (
           <p className="text-[11px] tracking-[0.22em] uppercase text-[#b8924a] mb-5 font-medium">
             {data.eyebrowText}
           </p>
         )}
 
-        <h1 className="font-playfair text-[42px] font-normal text-[#f0ebe0] leading-[1.1] mb-3 max-[900px]:text-[30px]">
+        <h1 className="font-playfair text-[42px] font-semibold text-[#f0ebe0] leading-[1.1] mb-3 max-[900px]:text-[30px]">
           {data.heading}
           {data.subheading && (
             <em
@@ -93,7 +95,7 @@ export default function HeroSection({ data }: { data: HeroData | null }) {
         </h1>
 
         {data.description && (
-          <p className="text-[15px] font-medium text-[rgba(240,235,224,0.65)] leading-[1.85] mb-8 max-w-[420px]">
+          <p className="text-[14px] font-medium text-[rgba(240,235,224,0.65)] leading-[1.85] mb-8 max-w-[420px]">
             {data.description}
           </p>
         )}
@@ -102,7 +104,7 @@ export default function HeroSection({ data }: { data: HeroData | null }) {
           {data.primaryButtonText && data.primaryButtonUrl && (
             <a
               href={data.primaryButtonUrl}
-              className="bg-[#b8924a] text-[#0b1f1c] text-xs font-semibold tracking-[0.1em] uppercase px-6 py-3.5 rounded-[2px] hover:bg-white hover:text-[#0b1f1c] transition-colors inline-block"
+              className="bg-[#b8924a] text-[#0b1f1c] text-xs font-semibold tracking-[0.1em] uppercase px-6 py-3.5 rounded-[2px] hover:bg-white hover:text-[#0b1f1c] hover:scale-[1.04] active:scale-[0.97] transition-all duration-300 inline-block"
             >
               {data.primaryButtonText}
             </a>
@@ -110,13 +112,13 @@ export default function HeroSection({ data }: { data: HeroData | null }) {
           {data.secondaryButtonText && data.secondaryButtonUrl && (
             <a
               href={data.secondaryButtonUrl}
-              className="border border-[rgba(240,235,224,0.35)] text-[rgba(240,235,224,0.8)] text-xs tracking-[0.1em] uppercase px-6 py-3.5 rounded-[2px] hover:border-white hover:text-white transition-all inline-block"
+              className="border border-[rgba(240,235,224,0.35)] text-[rgba(240,235,224,0.8)] text-xs tracking-[0.1em] uppercase px-6 py-3.5 rounded-[2px] hover:border-white hover:text-white hover:scale-[1.04] active:scale-[0.97] transition-all duration-300 inline-block"
             >
               {data.secondaryButtonText}
             </a>
           )}
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }

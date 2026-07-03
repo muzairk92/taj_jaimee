@@ -1,4 +1,5 @@
 import Container from "@/components/ui/Container";
+import Reveal from "@/components/ui/Reveal";
 
 interface FounderBioData {
   eyebrowText?: string;
@@ -22,7 +23,7 @@ export default function FirmSection({ data }: { data: FounderBioData | null }) {
       <Container className="py-20 max-[900px]:py-14">
         <div className="grid grid-cols-2 gap-16 items-start max-[900px]:grid-cols-1 max-[900px]:gap-10">
           {/* Left — bio */}
-          <div>
+          <Reveal>
             {data.eyebrowText && (
               <p className="text-[11px] tracking-[0.22em] uppercase text-[#b8924a] mb-3 font-medium">
                 {data.eyebrowText}
@@ -34,10 +35,10 @@ export default function FirmSection({ data }: { data: FounderBioData | null }) {
               </h2>
             )}
             {data.bioParagraph1 && (
-              <p className="text-sm font-medium text-[#7b6b5a] leading-[1.85] mb-4">{data.bioParagraph1}</p>
+              <p className="text-[14px] font-medium text-[#7b6b5a] leading-[1.85] mb-4">{data.bioParagraph1}</p>
             )}
             {data.bioParagraph2 && (
-              <p className="text-sm font-medium text-[#7b6b5a] leading-[1.85] mb-4">{data.bioParagraph2}</p>
+              <p className="text-[14px] font-medium text-[#7b6b5a] leading-[1.85] mb-4">{data.bioParagraph2}</p>
             )}
 
             {data.quote && (
@@ -59,20 +60,19 @@ export default function FirmSection({ data }: { data: FounderBioData | null }) {
             {data.buttonText && data.buttonUrl && (
               <a
                 href={data.buttonUrl}
-                className="bg-[#b8924a] text-[#0b1f1c] text-xs font-semibold tracking-[0.1em] uppercase px-5 py-3 rounded-[2px] inline-block hover:bg-[#3a2e28] hover:text-white transition-colors"
+                className="bg-[#b8924a] text-[#0b1f1c] text-xs font-semibold tracking-[0.1em] uppercase px-5 py-3 rounded-[2px] inline-block hover:bg-[#3a2e28] hover:text-white hover:scale-[1.04] active:scale-[0.97] transition-all duration-300"
               >
                 {data.buttonText}
               </a>
             )}
-          </div>
+          </Reveal>
 
           {/* Right — structure diagram */}
-          <div>
+          <Reveal delay={150}>
             <div
               className="rounded-[10px] p-8"
               style={{ background: "var(--linen)", border: "0.5px solid var(--border)" }}
             >
-            
 
               {/* Founder box */}
               {(data.founderName || data.founderTitle) && (
@@ -141,7 +141,7 @@ export default function FirmSection({ data }: { data: FounderBioData | null }) {
                 </div>
               )}
             </div>
-          </div>
+          </Reveal>
         </div>
       </Container>
     </section>
