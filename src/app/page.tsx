@@ -1,65 +1,155 @@
-import Image from "next/image";
+import client from "@/lib/apollo/client";
+import { GET_HOMEPAGE } from "@/lib/graphql/homepage.queries";
+import HeroSection from "@/components/home/HeroSection";
+import TaglineBar from "@/components/home/TaglineBar";
+import StatsStrip from "@/components/home/StatsStrip";
+import WhySection from "@/components/home/WhySection";
+import WhoSection from "@/components/home/WhoSection";
+import ServicesSection from "@/components/home/ServicesSection";
+import FirmSection from "@/components/home/FirmSection";
+import PartnersSection from "@/components/home/PartnersSection";
+import CredStrip from "@/components/home/CredStrip";
+import TestimonialsSection from "@/components/home/TestimonialsSection";
+import IndustriesSection from "@/components/home/IndustriesSection";
+import InsightsSection from "@/components/home/InsightsSection";
+import CtaSection from "@/components/home/CtaSection";
 
-export default function Home() {
+type CmsSection = { __typename: string } & Record<string, unknown>;
+
+async function fetchCmsSections(): Promise<CmsSection[] | null> {
+  if (!process.env.NEXT_PUBLIC_WORDPRESS_API_URL) return null;
+  const timeout = new Promise<null>((resolve) => setTimeout(() => resolve(null), 3000));
+  const fetch = client
+    .query({ query: GET_HOMEPAGE, fetchPolicy: "no-cache" })
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    .then(({ data }) => (data as any)?.page?.homepageSections?.homepageSections ?? null)
+    .catch(() => null);
+  return Promise.race([fetch, timeout]);
+}
+
+function getSection<T>(sections: CmsSection[] | null, typename: string): T | null {
+  if (!sections) return null;
+  return (sections.find((s) => s.__typename === typename) as T) ?? null;
+}
+
+export default async function HomePage() {
+  const sections = await fetchCmsSections();
+
+  const hero = getSection<{
+    eyebrowText?: string;
+    heading?: string;
+    subheading?: string;
+    description?: string;
+    primaryButtonText?: string;
+    primaryButtonUrl?: string;
+    secondaryButtonText?: string;
+    secondaryButtonUrl?: string;
+    backgroundImage?: { node?: { sourceUrl?: string; altText?: string } };
+  }>(sections, "HomepageSectionsHomepageSectionsHeroLayout");
+
+  const trustBar = getSection<{
+    trustItems?: { label: string }[];
+  }>(sections, "HomepageSectionsHomepageSectionsTrustBarLayout");
+
+  const statsBar = getSection<{
+    stats?: { number: string; label: string }[];
+  }>(sections, "HomepageSectionsHomepageSectionsStatsBarLayout");
+
+  const featureCards = getSection<{
+    eyebrowText?: string;
+    heading?: string;
+    description?: string;
+    cards?: { number: string; title: string; description: string }[];
+  }>(sections, "HomepageSectionsHomepageSectionsFeatureCardsLayout");
+
+  const whoWeWorkWith = getSection<{
+    eyebrowText?: string;
+    heading?: string;
+    description?: string;
+    buttonText?: string;
+    buttonUrl?: string;
+    traits?: { text: string }[];
+  }>(sections, "HomepageSectionsHomepageSectionsWhoWeWorkWithLayout");
+
+  const servicesPillars = getSection<{
+    eyebrowText?: string;
+    heading?: string;
+    description?: string;
+    pillars?: { label: string; title: string; description: string; linkText: string; linkUrl: string }[];
+  }>(sections, "HomepageSectionsHomepageSectionsServicesPillarsLayout");
+
+  const founderBio = getSection<{
+    eyebrowText?: string;
+    heading?: string;
+    bioParagraph1?: string;
+    bioParagraph2?: string;
+    quote?: string;
+    founderImage?: { node?: { sourceUrl?: string; altText?: string } };
+    founderName?: string;
+    founderTitle?: string;
+    buttonText?: string;
+    buttonUrl?: string;
+    structureItems?: { label: string; sublabel: string }[];
+  }>(sections, "HomepageSectionsHomepageSectionsFounderBioLayout");
+
+  const partnerEcosystem = getSection<{
+    eyebrowText?: string;
+    heading?: string;
+    description?: string;
+    partnerLogos?: { logo?: { node?: { sourceUrl?: string; altText?: string } }; name?: string }[];
+    buttonText?: string;
+    buttonUrl?: string;
+  }>(sections, "HomepageSectionsHomepageSectionsPartnerEcosystemLayout");
+
+  const awardsBar = getSection<{
+    awards?: { icon?: { node?: { sourceUrl?: string; altText?: string } }; title?: string; subtitle?: string }[];
+  }>(sections, "HomepageSectionsHomepageSectionsAwardsBarLayout");
+
+  const testimonials = getSection<{
+    eyebrowText?: string;
+    heading?: string;
+    description?: string;
+    testimonials?: { quote?: string; name?: string; title?: string; avatar?: { node?: { sourceUrl?: string; altText?: string } } }[];
+  }>(sections, "HomepageSectionsHomepageSectionsTestimonialsLayout");
+
+  const industriesData = getSection<{
+    eyebrowText?: string;
+    heading?: string;
+    industries?: { label: string }[];
+  }>(sections, "HomepageSectionsHomepageSectionsIndustriesLayout");
+
+  const insightsData = getSection<{
+    eyebrowText?: string;
+    heading?: string;
+    description?: string;
+    articles?: { category?: string; title?: string; description?: string }[];
+  }>(sections, "HomepageSectionsHomepageSectionsInsightsLayout");
+
+  const finalCta = getSection<{
+    eyebrowText?: string;
+    heading?: string;
+    description?: string;
+    primaryButtonText?: string;
+    primaryButtonUrl?: string;
+    secondaryButtonText?: string;
+    secondaryButtonUrl?: string;
+  }>(sections, "HomepageSectionsHomepageSectionsFinalCtaLayout");
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <main>
+      <HeroSection data={hero} />
+      <TaglineBar data={trustBar} />
+      <StatsStrip data={statsBar} />
+      <WhySection data={featureCards} />
+      <WhoSection data={whoWeWorkWith} />
+      <ServicesSection data={servicesPillars} />
+      <FirmSection data={founderBio} />
+      <PartnersSection data={partnerEcosystem} />
+      <CredStrip data={awardsBar} />
+      <TestimonialsSection data={testimonials} />
+      <IndustriesSection data={industriesData} />
+      <InsightsSection data={insightsData} />
+      <CtaSection data={finalCta} />
+    </main>
   );
 }
