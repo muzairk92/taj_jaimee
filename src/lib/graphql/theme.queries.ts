@@ -22,6 +22,8 @@ export const GET_THEME_SETTINGS = gql`
           contactEmail
           contactLocation
           copyrightText
+          linkedin
+          facebook
         }
       }
     }

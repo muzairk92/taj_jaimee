@@ -83,3 +83,19 @@ body {
 .animate-drawer-item {
   animation: drawer-item-in 400ms ease-out both;
 }
+
+/* Footer column grid — column count is CMS-driven on desktop (via --footer-cols),
+   but must stay a fixed 2-column layout on mobile regardless of that count. */
+.footer-grid {
+  grid-template-columns: var(--footer-cols);
+}
+
+@media (max-width: 900px) {
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .footer-grid > *:first-child {
+    grid-column: 1 / -1;
+  }
+}

@@ -13,6 +13,8 @@ interface FooterData {
   contactEmail?: string;
   contactLocation?: string;
   copyrightText?: string;
+  linkedin?:string;
+  facebook?:string;
 }
 
 async function fetchFooterData(): Promise<FooterData | null> {
@@ -38,15 +40,18 @@ export default async function Footer() {
   const contactEmail = footer?.contactEmail ?? "hello@tanjimenezconsulting.com";
   const contactLocation = footer?.contactLocation ?? "Kongsberg, Norway";
   const copyrightText = footer?.copyrightText ?? "© 2025 Tan Jimenez Consulting. All rights reserved.";
+  const linkedinUrl = footer?.linkedin ?? "https://linkedin.com/company/tan-jimenez-consulting";
+  const facebookUrl = footer?.facebook ?? "#";
 
-  // Calculate dynamic grid columns
-  const totalColumns = footerColumns.length + 2; // brand + footerColumns + contact
   const gridCols = `1.5fr ${footerColumns.length > 0 ? footerColumns.map(() => '1fr').join(' ') + ' ' : ''}1fr`;
 
   return (
     <footer style={{ background: "var(--midnight)" }}>
       <div className="max-w-[1600px] mx-auto px-16 max-[1280px]:px-12 max-[900px]:px-6 pt-14 pb-8">
-        <div className={`grid gap-12 mb-10 max-[900px]:grid-cols-1 max-[900px]:gap-8`} style={{ gridTemplateColumns: gridCols }}>
+        <div
+          className="footer-grid grid gap-12 mb-10 max-[900px]:gap-8"
+          style={{ "--footer-cols": gridCols } as React.CSSProperties}
+        >
           {/* Brand */}
           <div>
             <span className="block font-playfair text-xl text-[#f0ebe0] tracking-[0.03em] mb-1">
@@ -132,7 +137,7 @@ export default async function Footer() {
           </span>
           <div className="flex gap-5">
             <a
-              href="https://linkedin.com/company/tan-jimenez-consulting"
+              href={linkedinUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="text-xs tracking-[0.1em] uppercase text-[rgba(240,235,224,0.45)] hover:text-[#b8924a] transition-colors"
@@ -140,10 +145,12 @@ export default async function Footer() {
               LinkedIn
             </a>
             <a
-              href="#"
+              href={facebookUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-xs tracking-[0.1em] uppercase text-[rgba(240,235,224,0.45)] hover:text-[#b8924a] transition-colors"
             >
-              Instagram
+              Facebook
             </a>
           </div>
         </div>
