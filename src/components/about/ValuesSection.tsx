@@ -41,12 +41,12 @@ export default function ValuesSection({ data }: { data: ValuesData | null }) {
         )}
 
         {valueItems.length > 0 && (
-          <div className="grid grid-cols-5 gap-4 max-[900px]:grid-cols-2 max-[640px]:grid-cols-1">
+          <div className="flex flex-wrap justify-center gap-4">
             {valueItems.map((value, i) => (
               <Reveal
                 key={value.title}
                 delay={i * 80}
-                className="bg-white border border-[#c8b8a2] rounded-[6px] p-6 text-center hover:-translate-y-1 hover:shadow-[0_4px_28px_rgba(58,46,40,0.08)]"
+                className="flex-1 min-w-[180px] max-w-[230px] bg-white border border-[#c8b8a2] rounded-[6px] p-6 text-center hover:-translate-y-1 hover:shadow-[0_4px_28px_rgba(58,46,40,0.08)]"
               >
                 <div className="w-9 h-9 border border-[#b8924a] rounded-full flex items-center justify-center mx-auto mb-4">
                   <div className="w-2 h-2 bg-[#b8924a] rounded-full" />

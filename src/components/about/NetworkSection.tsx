@@ -51,12 +51,12 @@ export default function NetworkSection({ data }: { data: AdvisoryNetworkData | n
         )}
 
         {members.length > 0 && (
-          <div className="grid grid-cols-3 gap-5 max-[900px]:grid-cols-1">
+          <div className="flex flex-wrap justify-center gap-5">
             {members.map((member, i) => (
               <Reveal
                 key={member.name ?? i}
                 delay={i * 100}
-                className="rounded-[6px] p-7"
+                className="flex-1 min-w-[280px] max-w-[400px] rounded-[6px] p-7"
                 style={{ background: "rgba(240,235,224,0.04)", border: "0.5px solid rgba(240,235,224,0.12)" }}
               >
                 <div className="flex items-center gap-3.5 mb-4">
