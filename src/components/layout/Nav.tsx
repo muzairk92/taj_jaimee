@@ -3,9 +3,15 @@ import { GET_THEME_SETTINGS } from "@/lib/graphql/theme.queries";
 import MobileMenu from "./MobileMenu";
 import Link from "next/link";
 
+export interface NavItem {
+  label: string;
+  url: string;
+  subItems?: { label: string; url: string }[];
+}
+
 interface HeaderData {
   logo?: { node?: { sourceUrl?: string; altText?: string } };
-  navItems?: { label: string; url: string }[];
+  navItems?: NavItem[];
   ctaText?: string;
   ctaUrl?: string;
 }
@@ -66,15 +72,62 @@ export default async function Nav() {
 
         {/* Desktop Links + CTA */}
         <div className="flex items-center gap-7 max-[992px]:hidden">
-          {navItems.map((link) => (
-            <a
-              key={link.label}
-              href={link.url}
-              className="text-xs font-medium tracking-[0.1em] uppercase text-[#b8924a] hover:text-white transition-colors"
-            >
-              {link.label}
-            </a>
-          ))}
+          {navItems.map((link) => {
+            const hasSubItems = !!link.subItems?.length;
+
+            return (
+              <div key={link.label} className="relative group">
+                <a
+                  href={link.url}
+                  className="flex items-center gap-1.5 text-xs font-medium tracking-[0.1em] uppercase text-[#b8924a] hover:text-white transition-colors py-2"
+                >
+                  {link.label}
+                  {hasSubItems && (
+                    <svg
+                      width="9"
+                      height="6"
+                      viewBox="0 0 10 6"
+                      fill="none"
+                      className="shrink-0 transition-transform duration-200 group-hover:rotate-180"
+                    >
+                      <path
+                        d="M1 1l4 4 4-4"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  )}
+                </a>
+
+                {hasSubItems && (
+                  // Bridges the visual gap between the link and dropdown panel so the
+                  // hover state doesn't drop while the cursor crosses that empty space.
+                  <div className="absolute left-0 top-full pt-2 w-max">
+                    <div
+                      className="min-w-[190px] rounded-[4px] py-2 opacity-0 -translate-y-1 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200"
+                      style={{
+                        background: "var(--forest)",
+                        border: "1px solid rgba(184,146,74,0.2)",
+                        boxShadow: "0 16px 40px rgba(0,0,0,0.35)",
+                      }}
+                    >
+                      {link.subItems!.map((sub) => (
+                        <a
+                          key={sub.label}
+                          href={sub.url}
+                          className="block px-4 py-2.5 text-xs font-medium tracking-[0.06em] uppercase text-[rgba(240,235,224,0.75)] hover:text-white hover:bg-[rgba(240,235,224,0.06)] transition-colors"
+                        >
+                          {sub.label}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            );
+          })}
           <a
             href={ctaUrl}
             className="bg-[#b8924a] text-[#0b1f1c] text-xs font-semibold tracking-[0.1em] uppercase px-5 py-2.5 rounded-[2px] hover:bg-white hover:text-[#0b1f1c] hover:scale-[1.05] active:scale-[0.96] transition-all duration-300 whitespace-nowrap"

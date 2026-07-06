@@ -1,31 +1,38 @@
 import { gql } from '@apollo/client';
 
 export const GET_THEME_SETTINGS = gql`
-  query GetThemeSettings {
-    themeSettings {
-      themeSettingsFields {
-        header {
-          logo {
-            node { sourceUrl altText }
-          }
-          navItems { label url }
-          ctaText
-          ctaUrl
+query GetThemeSettings {
+  themeSettings {
+    themeSettingsFields {
+      header {
+        logo {
+          node { sourceUrl altText }
         }
-        footer {
-          companyName
-          tagline
-          footerColumns {
-            columnTitle
-            links { label url }
+        navItems {
+          label
+          url
+          subItems {
+            label
+            url
           }
-          contactEmail
-          contactLocation
-          copyrightText
-          linkedin
-          facebook
         }
+        ctaText
+        ctaUrl
+      }
+      footer {
+        companyName
+        tagline
+        footerColumns {
+          columnTitle
+          links { label url }
+        }
+        contactEmail
+        contactLocation
+        copyrightText
+        linkedin
+        facebook
       }
     }
   }
+}
 `;

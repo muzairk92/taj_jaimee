@@ -12,7 +12,7 @@ import CredStrip from "@/components/home/CredStrip";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 import IndustriesSection from "@/components/home/IndustriesSection";
 import InsightsSection from "@/components/home/InsightsSection";
-import CtaSection from "@/components/home/CtaSection";
+import CtaSection from "@/components/shared/CtaSection";
 
 type CmsSection = { __typename: string } & Record<string, unknown>;
 
