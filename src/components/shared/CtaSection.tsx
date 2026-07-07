@@ -13,6 +13,14 @@ interface FinalCtaData {
 
 export default function CtaSection({ data }: { data: FinalCtaData | null }) {
   if (!data) return null;
+  const hasContent = !!(
+    data.eyebrowText ||
+    data.heading ||
+    data.description ||
+    (data.primaryButtonText && data.primaryButtonUrl) ||
+    (data.secondaryButtonText && data.secondaryButtonUrl)
+  );
+  if (!hasContent) return null;
 
   return (
     <section
