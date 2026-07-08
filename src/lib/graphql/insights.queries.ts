@@ -66,7 +66,7 @@ export const GET_INSIGHT_DETAIL = gql`
 
 export const GET_INSIGHTS_PAGE = gql`
   query GetInsightsPage {
-    page(id: "insights", idType: URI) {
+    page(id: "110", idType: DATABASE_ID) {
       title
       insightsPageSections {
         insightsSections {
