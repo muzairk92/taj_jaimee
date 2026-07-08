@@ -18,20 +18,20 @@ export default function MissionVisionSection({ data }: { data: MissionVisionData
   const hasVision = !!(data.visionLabel || data.visionText);
 
   return (
-    <section style={{ background: "var(--forest)" }}>
+    <section style={{ background: "var(--rose)" }}>
       <Container className="py-20 max-[900px]:py-14">
         {(data.eyebrowText || data.heading || data.headingEmphasis) && (
           <Reveal className="text-center mb-12">
             {data.eyebrowText && (
-              <p className="text-[11px] tracking-[0.22em] uppercase text-[#b8924a] mb-3 font-medium">
+              <p className="text-[11px] tracking-[0.22em] uppercase text-[#5a3535] mb-3 font-medium">
                 {data.eyebrowText}
               </p>
             )}
             {(data.heading || data.headingEmphasis) && (
-              <h2 className="font-playfair text-[32px] font-semibold text-[#f0ebe0] leading-[1.2]">
+              <h2 className="font-playfair text-[32px] font-semibold text-[#3a2e28] leading-[1.2]">
                 {data.heading}
                 {data.headingEmphasis && (
-                  <em className="font-cormorant italic text-[#d4b06a]">{data.headingEmphasis}</em>
+                  <em className="font-cormorant italic text-[#7a4a4a]">{data.headingEmphasis}</em>
                 )}
               </h2>
             )}
@@ -42,8 +42,8 @@ export default function MissionVisionSection({ data }: { data: MissionVisionData
           <div className="grid grid-cols-2 gap-6 max-[900px]:grid-cols-1">
             {hasMission && (
               <Reveal
-                className="why-card rounded-[6px] p-8"
-                style={{ background: "rgba(240,235,224,0.05)", border: "0.5px solid rgba(240,235,224,0.14)" }}
+                className="why-card rounded-[6px] p-8 bg-white"
+                style={{ border: "0.5px solid var(--border)" }}
               >
                 {data.missionLabel && (
                   <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-[#b8924a] mb-4">
@@ -51,7 +51,7 @@ export default function MissionVisionSection({ data }: { data: MissionVisionData
                   </p>
                 )}
                 {data.missionText && (
-                  <p className="font-cormorant italic font-semibold text-[18px] text-[#f0ebe0] leading-[1.7]">
+                  <p className="font-cormorant italic font-semibold text-[18px] text-[#3a2e28] leading-[1.7]">
                     {data.missionText}
                   </p>
                 )}
@@ -61,8 +61,8 @@ export default function MissionVisionSection({ data }: { data: MissionVisionData
             {hasVision && (
               <Reveal
                 delay={100}
-                className="why-card rounded-[6px] p-8"
-                style={{ background: "rgba(240,235,224,0.05)", border: "0.5px solid rgba(240,235,224,0.14)" }}
+                className="why-card rounded-[6px] p-8 bg-white"
+                style={{ border: "0.5px solid var(--border)" }}
               >
                 {data.visionLabel && (
                   <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-[#b8924a] mb-4">
@@ -70,7 +70,7 @@ export default function MissionVisionSection({ data }: { data: MissionVisionData
                   </p>
                 )}
                 {data.visionText && (
-                  <p className="font-cormorant italic font-semibold text-[18px] text-[#f0ebe0] leading-[1.7]">
+                  <p className="font-cormorant italic font-semibold text-[18px] text-[#3a2e28] leading-[1.7]">
                     {data.visionText}
                   </p>
                 )}

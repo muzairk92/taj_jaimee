@@ -15,7 +15,7 @@ export default function CategoriesSection({ data }: { data: CategoriesData | nul
   if (!hasHeader && categories.length === 0) return null;
 
   return (
-    <section style={{ background: "var(--linen)" }}>
+    <section style={{ background: "var(--rose)" }}>
       <Container className="py-20 max-[900px]:py-14">
         {hasHeader && (
           <Reveal className="text-center mb-12">

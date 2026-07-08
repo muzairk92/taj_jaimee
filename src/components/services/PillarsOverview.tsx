@@ -26,7 +26,7 @@ export default function PillarsOverview({ strategy, talent, tech }: PillarsOverv
   if (pillars.length === 0) return null;
 
   return (
-    <section style={{ background: "var(--linen)" }}>
+    <section style={{ background: "var(--rose)" }}>
       <Container className="py-20 max-[900px]:py-14">
         <div className="flex flex-wrap justify-center gap-6">
           {pillars.map((pillar, i) => (
