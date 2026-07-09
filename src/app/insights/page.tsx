@@ -1,8 +1,7 @@
 import client from "@/lib/apollo/client";
 import { GET_INSIGHTS_PAGE, GET_INSIGHTS_LIST } from "@/lib/graphql/insights.queries";
 import InsightsHero, { type InsightsHeroData } from "@/components/insights/InsightsHero";
-import CategoriesSection, { type CategoriesData } from "@/components/insights/CategoriesSection";
-import ArticlesListSection from "@/components/insights/ArticlesListSection";
+import InsightsExplorer, { type CategoriesData } from "@/components/insights/InsightsExplorer";
 
 type InsightsCmsSection = { __typename: string } & Record<string, unknown>;
 
@@ -12,7 +11,7 @@ async function fetchInsightsPageSections(): Promise<InsightsCmsSection[] | null>
   const fetch = client
     .query({ query: GET_INSIGHTS_PAGE, fetchPolicy: "no-cache" })
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    .then(({ data }) => (data as any)?.page?.insightsPageSections?.insightsSections ?? null)
+    .then(({ data }) => (data as any)?.pages?.nodes?.[0]?.insightsPageSections?.insightsSections ?? null)
     .catch(() => null);
   return Promise.race([fetch, timeout]);
 }
@@ -42,8 +41,7 @@ export default async function InsightsPage() {
   return (
     <main>
       <InsightsHero data={hero} />
-      <CategoriesSection data={categories} />
-      <ArticlesListSection insights={insights} />
+      <InsightsExplorer categoriesData={categories} insights={insights} />
     </main>
   );
 }

@@ -15,6 +15,12 @@ interface FooterData {
   copyrightText?: string;
   linkedin?:string;
   facebook?:string;
+  x?: string;
+  instagram?: string;
+  youtube?: string;
+  tiktok?: string;
+  threads?: string;
+  pinterest?: string;
 }
 
 async function fetchFooterData(): Promise<FooterData | null> {
@@ -42,6 +48,14 @@ export default async function Footer() {
   const copyrightText = footer?.copyrightText ?? "© 2025 Tan Jimenez Consulting. All rights reserved.";
   const linkedinUrl = footer?.linkedin ?? "https://linkedin.com/company/tan-jimenez-consulting";
   const facebookUrl = footer?.facebook ?? "#";
+  const extraSocialLinks = [
+    { label: "X", url: footer?.x },
+    { label: "Instagram", url: footer?.instagram },
+    { label: "YouTube", url: footer?.youtube },
+    { label: "TikTok", url: footer?.tiktok },
+    { label: "Threads", url: footer?.threads },
+    { label: "Pinterest", url: footer?.pinterest },
+  ].filter((social): social is { label: string; url: string } => !!social.url);
 
   const gridCols = `1.5fr ${footerColumns.length > 0 ? footerColumns.map(() => '1fr').join(' ') + ' ' : ''}1fr`;
 
@@ -152,6 +166,17 @@ export default async function Footer() {
             >
               Facebook
             </a>
+            {extraSocialLinks.map((social) => (
+              <a
+                key={social.label}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs tracking-[0.1em] uppercase text-[rgba(240,235,224,0.45)] hover:text-[#b8924a] transition-colors"
+              >
+                {social.label}
+              </a>
+            ))}
           </div>
         </div>
       </div>

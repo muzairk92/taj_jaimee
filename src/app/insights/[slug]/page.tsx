@@ -24,7 +24,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   if (!insight) notFound();
 
   const fields = insight.insightFields ?? {};
-  const category = fields.category?.[0];
+  const category = fields.category;
   const body = fields.body ?? [];
 
   return (

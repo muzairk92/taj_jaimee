@@ -31,6 +31,12 @@ query GetThemeSettings {
         copyrightText
         linkedin
         facebook
+        x
+        instagram
+        youtube
+        tiktok
+        threads
+        pinterest
       }
     }
   }
