@@ -9,6 +9,7 @@ interface FooterColumn {
 interface FooterData {
   companyName?: string;
   tagline?: string;
+  closerText?: string;
   footerColumns?: FooterColumn[];
   contactEmail?: string;
   contactLocation?: string;
@@ -42,6 +43,7 @@ export default async function Footer() {
 
   const companyName = footer?.companyName ?? "Tan Jimenez Consulting";
   const tagline = footer?.tagline ?? "Strategy · Growth · Impact";
+  const closerText = footer?.closerText ?? "We help ambitious companies turn complexity into direction, opportunity into execution, and growth into lasting impact."
   const footerColumns = footer?.footerColumns ?? [];
   const contactEmail = footer?.contactEmail ?? "hello@tanjimenezconsulting.com";
   const contactLocation = footer?.contactLocation ?? "Kongsberg, Norway";
@@ -74,11 +76,15 @@ export default async function Footer() {
             <span className="block text-[11px] font-medium tracking-[0.2em] uppercase text-[#b8924a] mb-4">
               {tagline}
             </span>
-            <p className="font-cormorant font-semibold italic text-base text-[rgba(212,176,106,0.7)] leading-[1.7] max-w-[280px]">
+            <p className="font-cormorant font-semibold  text-[rgba(212,176,106,0.7)] leading-[1.7] max-w-[280px]">
               Strategy with clarity.
+              <br/>
+              Growth with execution.
               <br />
               Leadership with impact.
+              <br />
             </p>
+            <p className="text-sm text-[rgba(240,235,224,0.65)] w-80 mt-5">{closerText}</p>
           </div>
 
           {/* Footer Columns */}

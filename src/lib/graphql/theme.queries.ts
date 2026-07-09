@@ -22,6 +22,7 @@ query GetThemeSettings {
       footer {
         companyName
         tagline
+        closerText
         footerColumns {
           columnTitle
           links { label url }
