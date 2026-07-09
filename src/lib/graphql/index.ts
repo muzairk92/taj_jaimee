@@ -3,5 +3,6 @@ export * from "./about.queries";
 export * from "./partners.queries";
 export * from "./services.queries";
 export * from "./insights.queries";
+export * from "./founder-profile.queries";
 export * from "./contact.queries";
 export * from "./theme.queries";
