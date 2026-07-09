@@ -50,7 +50,7 @@ export default function FounderHero({ data }: { data: FounderHeroData | null }) 
             <Reveal delay={150}>
               <div
                 className="rounded-[8px] flex items-center justify-center overflow-hidden mb-5 max-[900px]:max-w-[260px] max-[900px]:mx-auto"
-                style={{ aspectRatio: "4 / 5", background: "var(--forest)", border: "1px solid var(--gold)" }}
+                style={{ aspectRatio: "4 / 4", background: "var(--forest)", border: "1px solid var(--gold)" }}
               >
                 {photoSrc ? (
                   <img
