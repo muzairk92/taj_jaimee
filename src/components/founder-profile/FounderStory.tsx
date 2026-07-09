@@ -14,10 +14,10 @@ export default function FounderStory({ data }: { data: StoryData | null }) {
   return (
     <section style={{ background: "var(--linen)" }}>
       <Container className="py-20 max-[900px]:py-14">
-        <div className="max-w-[840px] mx-auto">
+        <div className="max-w-[860px] mx-auto">
           {paragraphs.map((p, i) => (
             <Reveal key={i} delay={i * 40}>
-              <p className="text-[14px] font-medium text-[#7b6b5a] leading-[1.85] mb-10 last:mb-0">{p.text}</p>
+              <p className="text-[14px] font-medium text-[#7b6b5a] leading-[1.85] mb-5">{p.text}</p>
             </Reveal>
           ))}
         </div>
