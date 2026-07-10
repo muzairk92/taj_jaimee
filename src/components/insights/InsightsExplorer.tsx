@@ -76,7 +76,7 @@ export default function InsightsExplorer({ categoriesData, insights }: InsightsE
                         type="button"
                         onClick={() => setSelected(isActive ? null : (category.title as string))}
                         aria-pressed={isActive}
-                        style={{ height: "210px" }}
+                        style={{ height: "230px" }}
                         className={`w-full text-left rounded-[6px] p-6 border transition-all hover:-translate-y-1 hover:shadow-[0_4px_28px_rgba(58,46,40,0.08)] cursor-pointer flex flex-col ${
                           isActive ? "bg-[#3a2e28] border-[#3a2e28]" : "bg-white border-[#c8b8a2]"
                         }`}
@@ -90,7 +90,7 @@ export default function InsightsExplorer({ categoriesData, insights }: InsightsE
                         </h3>
                         {category.description && (
                           <p
-                            className={`text-[14px] font-normal leading-[1.75] line-clamp-5 ${
+                            className={`text-[14px] font-normal leading-[1.75] line-clamp-6 ${
                               isActive ? "text-[rgba(255,255,255,0.75)]" : "text-[#7b6b5a]"
                             }`}
                           >
