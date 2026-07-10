@@ -90,7 +90,7 @@ export default function InsightsExplorer({ categoriesData, insights }: InsightsE
                         </h3>
                         {category.description && (
                           <p
-                            className={`text-[14px] font-normal leading-[1.75] line-clamp-4 ${
+                            className={`text-[14px] font-normal leading-[1.75] line-clamp-5 ${
                               isActive ? "text-[rgba(255,255,255,0.75)]" : "text-[#7b6b5a]"
                             }`}
                           >
