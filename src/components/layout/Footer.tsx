@@ -1,5 +1,6 @@
 import client from "@/lib/apollo/client";
 import { GET_THEME_SETTINGS } from "@/lib/graphql/theme.queries";
+import SocialIcon from "@/components/ui/SocialIcon";
 
 interface FooterColumn {
   columnTitle?: string;
@@ -51,13 +52,16 @@ export default async function Footer() {
   const linkedinUrl = footer?.linkedin ?? "https://linkedin.com/company/tan-jimenez-consulting";
   const facebookUrl = footer?.facebook ?? "#";
   const extraSocialLinks = [
-    { label: "X", url: footer?.x },
-    { label: "Instagram", url: footer?.instagram },
-    { label: "YouTube", url: footer?.youtube },
-    { label: "TikTok", url: footer?.tiktok },
-    { label: "Threads", url: footer?.threads },
-    { label: "Pinterest", url: footer?.pinterest },
-  ].filter((social): social is { label: string; url: string } => !!social.url);
+    { label: "X", icon: "x", url: footer?.x },
+    { label: "Instagram", icon: "instagram", url: footer?.instagram },
+    { label: "YouTube", icon: "youtube", url: footer?.youtube },
+    { label: "TikTok", icon: "tiktok", url: footer?.tiktok },
+    { label: "Threads", icon: "threads", url: footer?.threads },
+    { label: "Pinterest", icon: "pinterest", url: footer?.pinterest },
+  ].filter(
+    (social): social is { label: string; icon: Parameters<typeof SocialIcon>[0]["name"]; url: string } =>
+      !!social.url
+  );
 
   const gridCols = `1.5fr ${footerColumns.length > 0 ? footerColumns.map(() => '1fr').join(' ') + ' ' : ''}1fr`;
 
@@ -160,16 +164,18 @@ export default async function Footer() {
               href={linkedinUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs tracking-[0.1em] uppercase text-[rgba(240,235,224,0.45)] hover:text-[#b8924a] transition-colors"
+              className="flex items-center gap-1.5 text-xs tracking-[0.1em] uppercase text-[rgba(240,235,224,0.45)] hover:text-[#b8924a] transition-colors"
             >
+              <SocialIcon name="linkedin" />
               LinkedIn
             </a>
             <a
               href={facebookUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs tracking-[0.1em] uppercase text-[rgba(240,235,224,0.45)] hover:text-[#b8924a] transition-colors"
+              className="flex items-center gap-1.5 text-xs tracking-[0.1em] uppercase text-[rgba(240,235,224,0.45)] hover:text-[#b8924a] transition-colors"
             >
+              <SocialIcon name="facebook" />
               Facebook
             </a>
             {extraSocialLinks.map((social) => (
@@ -178,8 +184,9 @@ export default async function Footer() {
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs tracking-[0.1em] uppercase text-[rgba(240,235,224,0.45)] hover:text-[#b8924a] transition-colors"
+                className="flex items-center gap-1.5 text-xs tracking-[0.1em] uppercase text-[rgba(240,235,224,0.45)] hover:text-[#b8924a] transition-colors"
               >
+                <SocialIcon name={social.icon} />
                 {social.label}
               </a>
             ))}

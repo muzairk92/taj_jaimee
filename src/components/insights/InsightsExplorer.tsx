@@ -76,16 +76,21 @@ export default function InsightsExplorer({ categoriesData, insights }: InsightsE
                         type="button"
                         onClick={() => setSelected(isActive ? null : (category.title as string))}
                         aria-pressed={isActive}
-                        className={`w-full text-left rounded-[6px] p-6 border transition-all hover:-translate-y-1 hover:shadow-[0_4px_28px_rgba(58,46,40,0.08)] cursor-pointer ${
+                        style={{ height: "210px" }}
+                        className={`w-full text-left rounded-[6px] p-6 border transition-all hover:-translate-y-1 hover:shadow-[0_4px_28px_rgba(58,46,40,0.08)] cursor-pointer flex flex-col ${
                           isActive ? "bg-[#3a2e28] border-[#3a2e28]" : "bg-white border-[#c8b8a2]"
                         }`}
                       >
-                        <h3 className={`text-[15px] font-semibold mb-2 ${isActive ? "text-white" : "text-[#3a2e28]"}`}>
+                        <h3
+                          className={`text-[15px] font-semibold mb-2 line-clamp-1 ${
+                            isActive ? "text-white" : "text-[#3a2e28]"
+                          }`}
+                        >
                           {category.title}
                         </h3>
                         {category.description && (
                           <p
-                            className={`text-[14px] font-normal leading-[1.75] ${
+                            className={`text-[14px] font-normal leading-[1.75] line-clamp-3 ${
                               isActive ? "text-[rgba(255,255,255,0.75)]" : "text-[#7b6b5a]"
                             }`}
                           >
