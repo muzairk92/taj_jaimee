@@ -35,6 +35,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         subtitle={fields.subtitle}
         author={fields.author}
         readTime={fields.readTime}
+        publishDate={fields.publishDate}
       />
       <section className="bg-white">
         <Container className="py-16 max-[900px]:py-10">

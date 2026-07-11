@@ -21,6 +21,7 @@ export const GET_INSIGHTS_LIST = gql`
           subtitle
           author
           readTime
+          publishDate
         }
       }
     }
@@ -41,6 +42,7 @@ export const GET_INSIGHT_DETAIL = gql`
         subtitle
         author
         readTime
+        publishDate
         closerText
         closerCtaText
         closerCtaUrl

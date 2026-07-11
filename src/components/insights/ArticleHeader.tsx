@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
+import { formatInsightDate } from "@/lib/formatDate";
 
 interface ArticleHeaderProps {
   category?: string;
@@ -8,9 +9,18 @@ interface ArticleHeaderProps {
   subtitle?: string;
   author?: string;
   readTime?: string;
+  publishDate?: string;
 }
 
-export default function ArticleHeader({ category, title, subtitle, author, readTime }: ArticleHeaderProps) {
+export default function ArticleHeader({
+  category,
+  title,
+  subtitle,
+  author,
+  readTime,
+  publishDate,
+}: ArticleHeaderProps) {
+  const formattedDate = formatInsightDate(publishDate);
   return (
     <section style={{ background: "var(--midnight)" }}>
       <Container className="py-20 max-[900px]:py-14">
@@ -36,7 +46,7 @@ export default function ArticleHeader({ category, title, subtitle, author, readT
             </p>
           )}
 
-          {(author || category || readTime) && (
+          {(author || category || readTime || formattedDate) && (
             <div
               className="flex items-center gap-4 flex-wrap pt-5"
               style={{ borderTop: "0.5px solid rgba(240,235,224,0.1)" }}
@@ -53,6 +63,9 @@ export default function ArticleHeader({ category, title, subtitle, author, readT
                 >
                   {category}
                 </span>
+              )}
+              {formattedDate && (
+                <span className="text-[11px] font-normal text-[rgba(240,235,224,0.35)]">{formattedDate}</span>
               )}
               {readTime && <span className="text-[11px] font-normal text-[rgba(240,235,224,0.35)]">{readTime}</span>}
             </div>

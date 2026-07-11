@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
+import { formatInsightDate } from "@/lib/formatDate";
 
 interface Category {
   title?: string;
@@ -24,6 +25,7 @@ interface InsightNode {
     subtitle?: string;
     author?: string;
     readTime?: string;
+    publishDate?: string;
   };
 }
 
@@ -135,6 +137,7 @@ export default function InsightsExplorer({ categoriesData, insights }: InsightsE
               {filteredInsights.map((insight, i) => {
                 const fields = insight.insightFields;
                 const category = fields?.category;
+                const formattedDate = formatInsightDate(fields?.publishDate);
 
                 return (
                   <Reveal
@@ -165,14 +168,16 @@ export default function InsightsExplorer({ categoriesData, insights }: InsightsE
                             {fields.subtitle}
                           </p>
                         )}
-                        {(fields?.author || fields?.readTime) && (
+                        {(fields?.author || fields?.readTime || formattedDate) && (
                           <p
                             className="text-[12px] font-medium text-[#7b6b5a]"
                             style={{ borderTop: "0.5px solid var(--border)", paddingTop: "12px" }}
                           >
-                            {fields.author && `By ${fields.author}`}
-                            {fields.author && fields.readTime && " · "}
-                            {fields.readTime}
+                            {fields?.author && `By ${fields.author}`}
+                            {fields?.author && (fields?.readTime || formattedDate) && " · "}
+                            {formattedDate}
+                            {formattedDate && fields?.readTime && " · "}
+                            {fields?.readTime}
                           </p>
                         )}
                       </div>
