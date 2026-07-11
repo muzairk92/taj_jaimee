@@ -49,9 +49,9 @@ export default async function Footer() {
   const contactEmail = footer?.contactEmail ?? "hello@tanjimenezconsulting.com";
   const contactLocation = footer?.contactLocation ?? "Kongsberg, Norway";
   const copyrightText = footer?.copyrightText ?? "© 2025 Tan Jimenez Consulting. All rights reserved.";
-  const linkedinUrl = footer?.linkedin ?? "https://linkedin.com/company/tan-jimenez-consulting";
-  const facebookUrl = footer?.facebook ?? "#";
-  const extraSocialLinks = [
+  const socialLinks = [
+    { label: "LinkedIn", icon: "linkedin", url: footer?.linkedin },
+    { label: "Facebook", icon: "facebook", url: footer?.facebook },
     { label: "X", icon: "x", url: footer?.x },
     { label: "Instagram", icon: "instagram", url: footer?.instagram },
     { label: "YouTube", icon: "youtube", url: footer?.youtube },
@@ -160,25 +160,7 @@ export default async function Footer() {
             {copyrightText}
           </span>
           <div className="flex gap-5">
-            <a
-              href={linkedinUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-xs tracking-[0.1em] uppercase text-[rgba(240,235,224,0.45)] hover:text-[#b8924a] transition-colors"
-            >
-              <SocialIcon name="linkedin" />
-              LinkedIn
-            </a>
-            <a
-              href={facebookUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-xs tracking-[0.1em] uppercase text-[rgba(240,235,224,0.45)] hover:text-[#b8924a] transition-colors"
-            >
-              <SocialIcon name="facebook" />
-              Facebook
-            </a>
-            {extraSocialLinks.map((social) => (
+            {socialLinks.map((social) => (
               <a
                 key={social.label}
                 href={social.url}
