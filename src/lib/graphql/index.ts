@@ -5,5 +5,6 @@ export * from "./services.queries";
 export * from "./insights.queries";
 export * from "./founder-profile.queries";
 export * from "./capability.queries";
+export * from "./team.queries";
 export * from "./contact.queries";
 export * from "./theme.queries";
