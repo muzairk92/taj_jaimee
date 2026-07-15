@@ -5,7 +5,7 @@ import "./globals.css";
 import Nav from "@/components/layout/Nav";
 import Footer from "@/components/layout/Footer";
 import client from "@/lib/apollo/client";
-import { GET_THEME_SETTINGS } from "@/lib/graphql/theme.queries";
+import { GET_THEME_GLOBALS } from "@/lib/graphql/theme.queries";
 
 const DEFAULT_DESCRIPTION =
   "Tan Jimenez Consulting helps ambitious companies grow across markets, partnerships, people and technology through founder-led advisory and a trusted global partner ecosystem.";
@@ -20,7 +20,7 @@ async function fetchThemeGlobals(): Promise<ThemeGlobals | null> {
   if (!process.env.NEXT_PUBLIC_WORDPRESS_API_URL) return null;
   const timeout = new Promise<null>((resolve) => setTimeout(() => resolve(null), 3000));
   const fetch = client
-    .query({ query: GET_THEME_SETTINGS, fetchPolicy: "no-cache" })
+    .query({ query: GET_THEME_GLOBALS, fetchPolicy: "no-cache" })
     .then(({ data }) => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const fields = (data as any)?.themeSettings?.themeSettingsFields;
