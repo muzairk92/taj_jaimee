@@ -39,6 +39,15 @@ query GetThemeSettings {
         threads
         pinterest
       }
+      description {
+        siteDescription
+        metaDescription
+        aboutUsSummary
+      }
+      scripts {
+        headerScripts
+        footerScripts
+      }
     }
   }
 }

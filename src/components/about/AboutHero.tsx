@@ -13,8 +13,9 @@ export default function AboutHero({ data }: { data: AboutHeroData | null }) {
 
   return (
     <section className="relative overflow-hidden text-center" style={{ background: "var(--midnight)" }}>
+      <div className="hero-gradient-animated absolute inset-0 pointer-events-none" />
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="hero-gradient-glow absolute inset-0 pointer-events-none"
         style={{
           background: "radial-gradient(ellipse 70% 60% at 50% 0%, rgba(184,146,74,0.16) 0%, transparent 60%)",
         }}

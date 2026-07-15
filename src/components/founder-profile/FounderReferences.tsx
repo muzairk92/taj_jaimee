@@ -96,7 +96,7 @@ export default function FounderReferences({ data }: { data: ReferencesData | nul
                       >
                         {t.quote && (
                           <blockquote className="border-l-2 border-[#b8924a] pl-5 mb-5">
-                            <p className="font-cormorant italic font-semibold text-[16px] text-[#3a2e28] leading-[1.7]">
+                            <p className="font-cormorant italic font-semibold text-[16px] text-[#3a2e28] leading-[1.7] line-clamp-[12]">
                               &ldquo;{t.quote}&rdquo;
                             </p>
                           </blockquote>

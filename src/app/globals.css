@@ -99,3 +99,50 @@ body {
     grid-column: 1 / -1;
   }
 }
+
+/* Slow ambient gradient drift for dark hero sections — subtle, not distracting */
+@keyframes hero-gradient-drift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes hero-gradient-glow {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.08);
+  }
+}
+
+.hero-gradient-animated {
+  background: linear-gradient(
+    115deg,
+    rgba(184, 146, 74, 0.22) 0%,
+    rgba(47, 75, 69, 0.4) 22%,
+    rgba(212, 168, 168, 0.14) 45%,
+    rgba(26, 58, 52, 0.5) 68%,
+    rgba(184, 146, 74, 0.18) 100%
+  );
+  background-size: 300% 300%;
+  animation: hero-gradient-drift 24s ease-in-out infinite;
+}
+
+.hero-gradient-glow {
+  animation: hero-gradient-glow 9s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-gradient-animated,
+  .hero-gradient-glow {
+    animation: none;
+  }
+}
