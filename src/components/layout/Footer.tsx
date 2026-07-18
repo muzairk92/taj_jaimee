@@ -66,7 +66,7 @@ export default async function Footer() {
   const gridCols = `1.5fr ${footerColumns.length > 0 ? footerColumns.map(() => '1fr').join(' ') + ' ' : ''}1fr`;
 
   return (
-    <footer style={{ background: "var(--midnight)" }}>
+    <footer style={{ background: "var(--midnight)", borderTop: "0.5px solid rgba(240,235,224,0.1)" }}>
       <div className="max-w-[1600px] mx-auto px-16 max-[1280px]:px-12 max-[900px]:px-6 pt-14 pb-8">
         <div
           className="footer-grid grid gap-12 mb-10 max-[900px]:gap-8"
