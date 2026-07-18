@@ -18,6 +18,14 @@ export const GET_SERVICES_PAGE = gql`
             heading
             description
             services { title body }
+            testimonialsHeading
+            testimonialsIntro
+            testimonials {
+              quote
+              name
+              role
+              context
+            }
           }
           ... on ServicesPageSectionsServicesSectionsTalentPillarLayout {
             eyebrowText
@@ -46,6 +54,14 @@ export const GET_SERVICES_PAGE = gql`
             bodyParagraph2
             bodyParagraph3
             bodyParagraph4
+            testimonialsHeading
+            testimonialsIntro
+            testimonials {
+              quote
+              name
+              role
+              context
+            }
           }
           ... on ServicesPageSectionsServicesSectionsWhoWeHelpLayout {
             eyebrowText

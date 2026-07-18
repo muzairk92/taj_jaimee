@@ -1,6 +1,13 @@
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
 
+interface Testimonial {
+  quote?: string;
+  name?: string;
+  role?: string;
+  context?: string;
+}
+
 export interface TechPillarData {
   eyebrowText?: string;
   heading?: string;
@@ -10,6 +17,39 @@ export interface TechPillarData {
   bodyParagraph2?: string;
   bodyParagraph3?: string;
   bodyParagraph4?: string;
+  testimonialsHeading?: string;
+  testimonialsIntro?: string;
+  testimonials?: Testimonial[];
+}
+
+function QuoteCard({ testimonial, delay }: { testimonial: Testimonial; delay: number }) {
+  return (
+    <Reveal
+      delay={delay}
+      className="flex-1 min-w-[320px] max-w-[440px] rounded-[6px] p-7 flex flex-col text-left"
+      style={{ background: "rgba(240,235,224,0.05)", border: "0.5px solid rgba(240,235,224,0.14)" }}
+    >
+      <span className="font-playfair text-[44px] text-[#b8924a] block leading-[0.7] mb-4 opacity-30 select-none">
+        &ldquo;
+      </span>
+      {testimonial.quote && (
+        <p className="font-cormorant italic font-semibold text-[16px] text-[#f0ebe0] leading-[1.75] mb-6 flex-1">
+          {testimonial.quote}
+        </p>
+      )}
+      {(testimonial.name || testimonial.role || testimonial.context) && (
+        <div className="pt-4" style={{ borderTop: "1px solid rgba(240,235,224,0.14)" }}>
+          {testimonial.name && <p className="text-sm font-semibold text-[#f0ebe0]">{testimonial.name}</p>}
+          {testimonial.role && (
+            <p className="text-xs font-medium text-[rgba(240,235,224,0.6)] mt-0.5">{testimonial.role}</p>
+          )}
+          {testimonial.context && (
+            <p className="text-[11px] font-normal text-[rgba(240,235,224,0.6)] mt-1 italic">{testimonial.context}</p>
+          )}
+        </div>
+      )}
+    </Reveal>
+  );
 }
 
 export default function TechPillarDetail({ data }: { data: TechPillarData | null }) {
@@ -23,7 +63,9 @@ export default function TechPillarDetail({ data }: { data: TechPillarData | null
     data.bodyParagraph3 ||
     data.bodyParagraph4
   );
-  if (!hasHeader && !hasService) return null;
+  const testimonials = data.testimonials?.filter((t) => t.quote || t.name) ?? [];
+  const hasTestimonialsHeader = !!(data.testimonialsHeading || data.testimonialsIntro);
+  if (!hasHeader && !hasService && !hasTestimonialsHeader && testimonials.length === 0) return null;
 
   return (
     <section id="tech-solutions" style={{ background: "var(--forest)" }} className="scroll-mt-[68px]">
@@ -78,6 +120,29 @@ export default function TechPillarDetail({ data }: { data: TechPillarData | null
             </div>
           )}
         </Reveal>
+
+        {hasTestimonialsHeader && (
+          <Reveal className="text-center mb-10 mt-14 max-w-[720px] mx-auto">
+            {data.testimonialsHeading && (
+              <h3 className="font-playfair text-[24px] font-semibold text-[#f0ebe0] leading-[1.3] mb-3">
+                {data.testimonialsHeading}
+              </h3>
+            )}
+            {data.testimonialsIntro && (
+              <p className="text-[14px] font-normal text-[rgba(240,235,224,0.7)] leading-[1.8]">
+                {data.testimonialsIntro}
+              </p>
+            )}
+          </Reveal>
+        )}
+
+        {testimonials.length > 0 && (
+          <div className={`flex flex-wrap justify-center gap-6 ${hasTestimonialsHeader ? "" : "mt-14"}`}>
+            {testimonials.map((testimonial, i) => (
+              <QuoteCard key={testimonial.name ?? i} testimonial={testimonial} delay={i * 80} />
+            ))}
+          </div>
+        )}
       </Container>
     </section>
   );
