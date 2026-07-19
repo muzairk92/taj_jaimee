@@ -6,6 +6,8 @@ interface NetworkMember {
   name?: string;
   role?: string;
   bio?: string;
+  ctaText?: string;
+  ctaUrl?: string;
 }
 
 export interface AdvisoryNetworkData {
@@ -54,7 +56,7 @@ export default function NetworkSection({ data }: { data: AdvisoryNetworkData | n
           <div className="flex flex-wrap justify-center gap-5">
             {members.map((member, i) => (
               <Reveal
-                key={member.name ?? i}
+                key={i}
                 delay={i * 100}
                 className="flex-1 min-w-[280px] max-w-[400px] rounded-[6px] p-7"
                 style={{ background: "rgba(240,235,224,0.04)", border: "0.5px solid rgba(240,235,224,0.12)" }}
@@ -79,6 +81,14 @@ export default function NetworkSection({ data }: { data: AdvisoryNetworkData | n
                   <p className="text-[13px] font-normal text-[rgba(240,235,224,0.62)] leading-[1.75]">
                     {member.bio}
                   </p>
+                )}
+                {member.ctaText && member.ctaUrl && (
+                  <a
+                    href={member.ctaUrl}
+                    className="inline-flex items-center gap-1 text-[11px] font-semibold tracking-[0.04em] uppercase text-[#d4b06a] mt-4 hover:text-[#f0ebe0] transition-colors"
+                  >
+                    {member.ctaText} →
+                  </a>
                 )}
               </Reveal>
             ))}

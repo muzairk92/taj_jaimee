@@ -8,6 +8,8 @@ interface PartnerItem {
   role?: string;
   bio?: string;
   quote?: string;
+  ctaText?: string;
+  ctaUrl?: string;
 }
 
 export interface TeamData {
@@ -114,7 +116,7 @@ export default function TeamSection({ data }: { data: TeamData | null }) {
               const photoSrc = partner.photo?.node?.sourceUrl ?? null;
               return (
                 <Reveal
-                  key={partner.name ?? i}
+                  key={i}
                   delay={i * 100}
                   className="rounded-[6px] p-8"
                   style={{ border: "0.5px solid var(--border)" }}
@@ -154,6 +156,14 @@ export default function TeamSection({ data }: { data: TeamData | null }) {
                         &ldquo;{partner.quote}&rdquo;
                       </p>
                     </blockquote>
+                  )}
+                  {partner.ctaText && partner.ctaUrl && (
+                    <a
+                      href={partner.ctaUrl}
+                      className="inline-flex items-center gap-1 text-[12px] font-semibold tracking-[0.04em] uppercase text-[#b8924a] mt-4 hover:text-[#3a2e28] transition-colors"
+                    >
+                      {partner.ctaText} →
+                    </a>
                   )}
                 </Reveal>
               );

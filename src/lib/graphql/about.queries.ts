@@ -60,6 +60,8 @@ export const GET_ABOUT_PAGE = gql`
               role
               bio
               quote
+              ctaText
+              ctaUrl
             }
           }
           ... on AboutSectionsAboutSectionsAdvisoryNetworkLayout {
@@ -72,6 +74,8 @@ export const GET_ABOUT_PAGE = gql`
               name
               role
               bio
+              ctaText
+              ctaUrl
             }
           }
           ... on AboutSectionsAboutSectionsFounderMessageLayout {
