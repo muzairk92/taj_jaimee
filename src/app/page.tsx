@@ -1,6 +1,6 @@
 import client from "@/lib/apollo/client";
 import { GET_HOMEPAGE } from "@/lib/graphql/homepage.queries";
-import HeroSection from "@/components/home/HeroSection";
+import DynamicSlider, { type DynamicSliderData } from "@/components/home/DynamicSlider";
 import TaglineBar from "@/components/home/TaglineBar";
 import StatsStrip from "@/components/home/StatsStrip";
 import WhySection from "@/components/home/WhySection";
@@ -35,17 +35,10 @@ function getSection<T>(sections: CmsSection[] | null, typename: string): T | nul
 export default async function HomePage() {
   const sections = await fetchCmsSections();
 
-  const hero = getSection<{
-    eyebrowText?: string;
-    heading?: string;
-    subheading?: string;
-    description?: string;
-    primaryButtonText?: string;
-    primaryButtonUrl?: string;
-    secondaryButtonText?: string;
-    secondaryButtonUrl?: string;
-    backgroundImage?: { node?: { sourceUrl?: string; altText?: string } };
-  }>(sections, "HomepageSectionsHomepageSectionsHeroLayout");
+  const dynamicSlider = getSection<DynamicSliderData>(
+    sections,
+    "HomepageSectionsHomepageSectionsDynamicSliderLayout"
+  );
 
   const trustBar = getSection<{
     trustItems?: { label: string }[];
@@ -137,7 +130,7 @@ export default async function HomePage() {
 
   return (
     <main>
-      <HeroSection data={hero} />
+      <DynamicSlider data={dynamicSlider} />
       <TaglineBar data={trustBar} />
       <StatsStrip data={statsBar} />
       <WhySection data={featureCards} />

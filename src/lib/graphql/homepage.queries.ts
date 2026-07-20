@@ -20,6 +20,34 @@ export const GET_HOMEPAGE = gql`
               node { sourceUrl altText }
             }
           }
+          ... on HomepageSectionsHomepageSectionsDynamicSliderLayout {
+            eyebrowText
+            heading
+            description
+            slides {
+              image {
+                node { sourceUrl altText }
+              }
+              videoUrl
+              heading
+              subheading
+              description
+              caption
+              altText
+              linkUrl
+              primaryButtonText
+              primaryButtonUrl
+              secondaryButtonText
+              secondaryButtonUrl
+            }
+            sliderConfig {
+              autoplay
+              autoplaySpeed
+              showPagination
+              showNavigation
+              loop
+            }
+          }
           ... on HomepageSectionsHomepageSectionsTrustBarLayout {
             trustItems { label }
           }
