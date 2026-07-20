@@ -6,7 +6,8 @@ import Link from "next/link";
 export interface NavItem {
   label: string;
   url: string;
-  subItems?: { label: string; url: string }[];
+  cssClass?: string;
+  subItems?: { label: string; url: string; cssClass?: string }[];
 }
 
 interface HeaderData {
@@ -79,7 +80,7 @@ export default async function Nav() {
               <div key={link.label} className="relative group">
                 <a
                   href={link.url}
-                  className="flex items-center gap-1.5 text-xs font-medium tracking-[0.1em] uppercase text-[#b8924a] hover:text-white transition-colors py-2"
+                  className={`flex items-center gap-1.5 text-xs font-medium tracking-[0.1em] uppercase text-[#b8924a] hover:text-white transition-colors py-2 ${link.cssClass ?? ""}`}
                 >
                   {link.label}
                   {hasSubItems && (
@@ -117,7 +118,7 @@ export default async function Nav() {
                         <a
                           key={sub.label}
                           href={sub.url}
-                          className="block px-4 py-2.5 text-xs font-medium tracking-[0.06em] uppercase text-[rgba(240,235,224,0.75)] hover:text-white hover:bg-[rgba(240,235,224,0.06)] transition-colors"
+                          className={`block px-4 py-2.5 text-xs font-medium tracking-[0.06em] uppercase text-[rgba(240,235,224,0.75)] hover:text-white hover:bg-[rgba(240,235,224,0.06)] transition-colors ${sub.cssClass ?? ""}`}
                         >
                           {sub.label}
                         </a>

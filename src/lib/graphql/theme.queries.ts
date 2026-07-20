@@ -11,9 +11,11 @@ query GetThemeSettings {
         navItems {
           label
           url
+          cssClass
           subItems {
             label
             url
+            cssClass
           }
         }
         ctaText

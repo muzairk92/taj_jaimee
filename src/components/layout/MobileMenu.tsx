@@ -59,7 +59,7 @@ export default function MobileMenu({ navItems, ctaText, ctaUrl }: MobileMenuProp
                   <a
                     href={link.url}
                     onClick={() => setIsOpen(false)}
-                    className="text-lg font-medium tracking-[0.15em] uppercase text-[#b8924a] hover:text-white transition-colors"
+                    className={`text-lg font-medium tracking-[0.15em] uppercase text-[#b8924a] hover:text-white transition-colors ${link.cssClass ?? ""}`}
                   >
                     {link.label}
                   </a>
@@ -96,7 +96,7 @@ export default function MobileMenu({ navItems, ctaText, ctaUrl }: MobileMenuProp
                         key={sub.label}
                         href={sub.url}
                         onClick={() => setIsOpen(false)}
-                        className="text-sm font-medium tracking-[0.1em] uppercase text-[rgba(240,235,224,0.65)] hover:text-white transition-colors"
+                        className={`text-sm font-medium tracking-[0.1em] uppercase text-[rgba(240,235,224,0.65)] hover:text-white transition-colors ${sub.cssClass ?? ""}`}
                       >
                         {sub.label}
                       </a>
