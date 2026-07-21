@@ -12,6 +12,10 @@ export const GET_FOUNDER_PROFILE_PAGE = gql`
             eyebrowText
             heading
             subheading
+            paragraph
+            tags {
+              text
+            }
             founderName
             founderRole
             photo {
@@ -22,63 +26,89 @@ export const GET_FOUNDER_PROFILE_PAGE = gql`
             }
           }
 
-          ... on FounderProfilePageSectionsFounderProfileSectionsStoryLayout {
-            paragraphs {
+          ... on FounderProfilePageSectionsFounderProfileSectionsTaglineLayout {
+            items {
               text
             }
+          }
+
+          ... on FounderProfilePageSectionsFounderProfileSectionsIntroductionLayout {
+            eyebrowText
+            heading
+            headingEmphasis
+            paragraph1
+            paragraph2
+            paragraph3
           }
 
           ... on FounderProfilePageSectionsFounderProfileSectionsExpertiseLayout {
             eyebrowText
             heading
-            items {
+            headingEmphasis
+            paragraph1
+            paragraph2
+            paragraph3
+            quoteText
+            quoteName
+            quoteRole
+            cards {
               title
               description
             }
           }
 
-          ... on FounderProfilePageSectionsFounderProfileSectionsResearchLayout {
+          ... on FounderProfilePageSectionsFounderProfileSectionsCredentialsLayout {
             eyebrowText
             heading
+            headingEmphasis
             paragraph1
             paragraph2
-            proofPoints {
-              text
+            paragraph3
+            credentials {
+              title
+              subtitle
             }
-            ctaText
-            ctaUrl
+            paragraph4
+            quoteText
+            quoteName
+            quoteRole
           }
 
-          ... on FounderProfilePageSectionsFounderProfileSectionsReferencesLayout {
+          ... on FounderProfilePageSectionsFounderProfileSectionsWhyFoundedLayout {
             eyebrowText
             heading
-            pullQuote
-            introText
-            groups {
-              category
-              intro
-              testimonials {
-                quote
-                name
-                title
-                photo {
-                  node {
-                    sourceUrl
-                    altText
-                  }
-                }
-              }
-            }
+            headingEmphasis
+            paragraph1
+            paragraph2
+            paragraph3
+            paragraph4
+            quoteText
+            quoteName
+            quoteRole
+          }
+
+          ... on FounderProfilePageSectionsFounderProfileSectionsWayForwardLayout {
+            eyebrowText
+            heading
+            headingEmphasis
+            subEyebrowText
+            paragraph1
+            paragraph2
+            paragraph3
+            paragraph4
+          }
+
+          ... on FounderProfilePageSectionsFounderProfileSectionsSignatureQuoteLayout {
+            quoteText
+            attributionName
+            attributionRole
           }
 
           ... on FounderProfilePageSectionsFounderProfileSectionsCtaLayout {
-            eyebrowText
             heading
             description
-            primaryButtonText
-            primaryButtonUrl
-            secondaryButtonText
-            secondaryButtonUrl
+            buttonText
+            buttonUrl
           }
         }
       }

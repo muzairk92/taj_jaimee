@@ -1,11 +1,6 @@
 import client from "@/lib/apollo/client";
 import { GET_FOUNDER_PROFILE_PAGE } from "@/lib/graphql/founder-profile.queries";
-import FounderHero, { type FounderHeroData } from "@/components/founder-profile/FounderHero";
-import FounderStory, { type StoryData } from "@/components/founder-profile/FounderStory";
-import FounderExpertise, { type ExpertiseData } from "@/components/founder-profile/FounderExpertise";
-import FounderResearch, { type ResearchData } from "@/components/founder-profile/FounderResearch";
-import FounderReferences, { type ReferencesData } from "@/components/founder-profile/FounderReferences";
-import CtaSection from "@/components/shared/CtaSection";
+import FounderBioCard, { type FounderBioCardProps } from "@/components/founder-profile/FounderBioCard";
 
 type FounderProfileCmsSection = { __typename: string } & Record<string, unknown>;
 
@@ -28,50 +23,55 @@ function getSection<T>(sections: FounderProfileCmsSection[] | null, typename: st
 export default async function FounderProfilePage() {
   const sections = await fetchFounderProfileSections();
 
-  const hero = getSection<FounderHeroData>(sections, "FounderProfilePageSectionsFounderProfileSectionsHeroLayout");
-  const story = getSection<StoryData>(sections, "FounderProfilePageSectionsFounderProfileSectionsStoryLayout");
-  const expertise = getSection<ExpertiseData>(
+  const hero = getSection<FounderBioCardProps["hero"]>(
+    sections,
+    "FounderProfilePageSectionsFounderProfileSectionsHeroLayout"
+  );
+  const tagline = getSection<FounderBioCardProps["tagline"]>(
+    sections,
+    "FounderProfilePageSectionsFounderProfileSectionsTaglineLayout"
+  );
+  const introduction = getSection<FounderBioCardProps["introduction"]>(
+    sections,
+    "FounderProfilePageSectionsFounderProfileSectionsIntroductionLayout"
+  );
+  const expertise = getSection<FounderBioCardProps["expertise"]>(
     sections,
     "FounderProfilePageSectionsFounderProfileSectionsExpertiseLayout"
   );
-  const research = getSection<ResearchData>(
+  const credentials = getSection<FounderBioCardProps["credentials"]>(
     sections,
-    "FounderProfilePageSectionsFounderProfileSectionsResearchLayout"
+    "FounderProfilePageSectionsFounderProfileSectionsCredentialsLayout"
   );
-  const references = getSection<ReferencesData>(
+  const whyFounded = getSection<FounderBioCardProps["whyFounded"]>(
     sections,
-    "FounderProfilePageSectionsFounderProfileSectionsReferencesLayout"
+    "FounderProfilePageSectionsFounderProfileSectionsWhyFoundedLayout"
   );
-  const cta = getSection<{
-    eyebrowText?: string;
-    heading?: string;
-    description?: string;
-    primaryButtonText?: string;
-    primaryButtonUrl?: string;
-    secondaryButtonText?: string;
-    secondaryButtonUrl?: string;
-  }>(sections, "FounderProfilePageSectionsFounderProfileSectionsCtaLayout");
+  const wayForward = getSection<FounderBioCardProps["wayForward"]>(
+    sections,
+    "FounderProfilePageSectionsFounderProfileSectionsWayForwardLayout"
+  );
+  const signatureQuote = getSection<FounderBioCardProps["signatureQuote"]>(
+    sections,
+    "FounderProfilePageSectionsFounderProfileSectionsSignatureQuoteLayout"
+  );
+  const cta = getSection<FounderBioCardProps["cta"]>(
+    sections,
+    "FounderProfilePageSectionsFounderProfileSectionsCtaLayout"
+  );
 
   return (
     <main>
-      <FounderHero data={hero} />
-      <FounderStory data={story} />
-      <FounderExpertise data={expertise} />
-      <FounderResearch data={research} />
-      <FounderReferences data={references} />
-      <CtaSection
-        data={
-          cta ?? {
-            eyebrowText: "Partner With Jaimee",
-            heading: "Let's Discuss Your Growth Priorities",
-            description:
-              "Whether you are entering a new market, building strategic partnerships or exploring technology-enabled solutions — we would be pleased to hear from you.",
-            primaryButtonText: "Discuss Your Growth Priorities",
-            primaryButtonUrl: "mailto:hello@tanjimenezconsulting.com",
-            secondaryButtonText: "Explore Our Services",
-            secondaryButtonUrl: "/services",
-          }
-        }
+      <FounderBioCard
+        hero={hero}
+        tagline={tagline}
+        introduction={introduction}
+        expertise={expertise}
+        credentials={credentials}
+        whyFounded={whyFounded}
+        wayForward={wayForward}
+        signatureQuote={signatureQuote}
+        cta={cta}
       />
     </main>
   );

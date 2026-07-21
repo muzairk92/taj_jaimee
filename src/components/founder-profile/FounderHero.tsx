@@ -5,6 +5,8 @@ export interface FounderHeroData {
   eyebrowText?: string;
   heading?: string;
   subheading?: string;
+  paragraph?: string;
+  tags?: { text?: string }[];
   founderName?: string;
   founderRole?: string;
   photo?: { node?: { sourceUrl?: string; altText?: string } };
@@ -43,6 +45,24 @@ export default function FounderHero({ data }: { data: FounderHeroData | null }) 
               <p className="font-cormorant italic font-semibold text-[#d4b06a] text-[22px] mt-4 max-[900px]:text-[19px]">
                 {data.subheading}
               </p>
+            )}
+            {data.paragraph && (
+              <p className="text-[14px] font-normal text-[rgba(240,235,224,0.65)] leading-[1.85] mt-5 ">
+                {data.paragraph}
+              </p>
+            )}
+            {data.tags && data.tags.length > 0 && (
+              <div className="flex gap-2 flex-wrap mt-6">
+                {data.tags.map((tag, i) => (
+                  <span
+                    key={i}
+                    className="text-[9px] font-normal tracking-[0.06em] text-[rgba(240,235,224,0.45)] px-2.5 py-1 rounded-[2px]"
+                    style={{ background: "rgba(240,235,224,0.06)", border: "0.5px solid rgba(240,235,224,0.12)" }}
+                  >
+                    {tag.text}
+                  </span>
+                ))}
+              </div>
             )}
           </Reveal>
 
