@@ -183,7 +183,7 @@ export default function FounderBioCard({
 
       {/* Tagline strip */}
       {taglineItems.length > 0 && (
-        <div style={{ background: "var(--rose)" }}>
+        <div id="tagline" className="scroll-mt-[68px]" style={{ background: "var(--rose)" }}>
           <Container className="py-3 max-[900px]:py-2.5">
             <Reveal className="flex items-center justify-center gap-6 flex-wrap max-[900px]:gap-3">
               {taglineItems.map((item, i) => (
@@ -203,7 +203,7 @@ export default function FounderBioCard({
 
       {/* Introduction */}
       {hasIntroduction && introduction && (
-        <section className="bg-white">
+        <section id="introduction" className="bg-white scroll-mt-[68px]">
           <Container className="py-20 max-[900px]:py-14">
             <div className="max-w-[1440px] mx-auto">
               <Reveal className="mb-10">
@@ -246,7 +246,7 @@ export default function FounderBioCard({
 
       {/* Expertise & Experience */}
       {hasExpertise && expertise && (
-        <section style={{ background: "var(--linen)" }}>
+        <section id="expertise" className="scroll-mt-[68px]" style={{ background: "var(--linen)" }}>
           <Container className="py-20 max-[900px]:py-14">
             <div className="max-w-[1440px] mx-auto">
               <Reveal className="mb-10">
@@ -335,7 +335,7 @@ export default function FounderBioCard({
 
       {/* Achievements & Credentials */}
       {hasCredentials && credentials && (
-        <section className="bg-white">
+        <section id="credentials" className="bg-white scroll-mt-[68px]">
           <Container className="py-20 max-[900px]:py-14">
             <div className="max-w-[1440px] mx-auto">
               <Reveal className="mb-10">
@@ -437,7 +437,7 @@ export default function FounderBioCard({
 
       {/* Why She Founded Tan Jimenez Consulting */}
       {hasWhyFounded && whyFounded && (
-        <section style={{ background: "var(--linen)" }}>
+        <section id="why-founded" className="scroll-mt-[68px]" style={{ background: "var(--linen)" }}>
           <Container className="py-20 max-[900px]:py-14">
             <div className="max-w-[1440px] mx-auto">
               <Reveal className="mb-10">
@@ -509,7 +509,7 @@ export default function FounderBioCard({
 
       {/* The Way Forward */}
       {hasWayForward && wayForward && (
-        <section style={{ background: "var(--forest)" }}>
+        <section id="way-forward" className="scroll-mt-[68px]" style={{ background: "var(--forest)" }}>
           <Container className="py-20 max-[900px]:py-14">
             <div className="max-w-[1440px] mx-auto">
               <Reveal className="mb-10">
@@ -564,7 +564,7 @@ export default function FounderBioCard({
 
       {/* Signature quote */}
       {hasSignatureQuote && signatureQuote && (
-        <section className="relative overflow-hidden" style={{ background: "var(--midnight)" }}>
+        <section id="signature-quote" className="relative overflow-hidden scroll-mt-[68px]" style={{ background: "var(--midnight)" }}>
           <div
             className="absolute top-0 right-0 w-1/2 h-full pointer-events-none"
             style={{
@@ -595,7 +595,7 @@ export default function FounderBioCard({
 
       {/* CTA strip */}
       {hasCta && cta && (
-        <div style={{ background: "var(--rose)" }}>
+        <div id="cta" className="scroll-mt-[68px]" style={{ background: "var(--rose)" }}>
           <Container className="py-4 flex items-center justify-between gap-4 flex-wrap">
             <Reveal>
               {cta.heading && (

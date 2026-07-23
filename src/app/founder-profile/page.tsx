@@ -1,6 +1,7 @@
 import client from "@/lib/apollo/client";
 import { GET_FOUNDER_PROFILE_PAGE } from "@/lib/graphql/founder-profile.queries";
 import FounderBioCard, { type FounderBioCardProps } from "@/components/founder-profile/FounderBioCard";
+import { deepStripHtml } from "@/lib/sanitizeText";
 
 type FounderProfileCmsSection = { __typename: string } & Record<string, unknown>;
 
@@ -12,7 +13,8 @@ async function fetchFounderProfileSections(): Promise<FounderProfileCmsSection[]
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     .then(({ data }) => (data as any)?.page?.founderProfilePageSections?.founderProfileSections ?? null)
     .catch(() => null);
-  return Promise.race([fetch, timeout]);
+  const sections = await Promise.race([fetch, timeout]);
+  return sections ? deepStripHtml(sections) : null;
 }
 
 function getSection<T>(sections: FounderProfileCmsSection[] | null, typename: string): T | null {

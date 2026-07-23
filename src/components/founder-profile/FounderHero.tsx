@@ -21,7 +21,7 @@ export default function FounderHero({ data }: { data: FounderHeroData | null }) 
   if (!hasText && !hasIdentity) return null;
 
   return (
-    <section className="relative overflow-hidden" style={{ background: "var(--midnight)" }}>
+    <section id="hero" className="relative overflow-hidden scroll-mt-[68px]" style={{ background: "var(--midnight)" }}>
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
