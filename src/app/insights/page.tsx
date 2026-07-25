@@ -11,7 +11,7 @@ async function fetchInsightsPageSections(): Promise<InsightsCmsSection[] | null>
   const fetch = client
     .query({ query: GET_INSIGHTS_PAGE, fetchPolicy: "no-cache" })
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    .then(({ data }) => (data as any)?.pages?.nodes?.[0]?.insightsPageSections?.insightsSections ?? null)
+    .then(({ data }) => (data as any)?.page?.insightsPageSections?.insightsSections ?? null)
     .catch(() => null);
   return Promise.race([fetch, timeout]);
 }

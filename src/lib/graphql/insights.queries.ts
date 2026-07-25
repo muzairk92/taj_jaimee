@@ -68,24 +68,22 @@ export const GET_INSIGHT_DETAIL = gql`
 
 export const GET_INSIGHTS_PAGE = gql`
   query GetInsightsPage {
-    pages(where: { title: "Insights" }, first: 1) {
-      nodes {
-        title
-        insightsPageSections {
-          insightsSections {
-            __typename
-            ... on InsightsPageSectionsInsightsSectionsHeroLayout {
-              eyebrowText
-              heading
+    page(id: "insights", idType: URI) {
+      title
+      insightsPageSections {
+        insightsSections {
+          __typename
+          ... on InsightsPageSectionsInsightsSectionsHeroLayout {
+            eyebrowText
+            heading
+            description
+          }
+          ... on InsightsPageSectionsInsightsSectionsCategoriesLayout {
+            eyebrowText
+            heading
+            categories {
+              title
               description
-            }
-            ... on InsightsPageSectionsInsightsSectionsCategoriesLayout {
-              eyebrowText
-              heading
-              categories {
-                title
-                description
-              }
             }
           }
         }
