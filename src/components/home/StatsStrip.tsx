@@ -10,7 +10,7 @@ export default function StatsStrip({ data }: { data: StatsBarData | null }) {
   if (!stats?.length) return null;
 
   return (
-    <div className="border-b border-[rgba(184,146,74,0.15)]" style={{ background: "var(--forest)" }}>
+    <div id="stats" className="border-b border-[rgba(184,146,74,0.15)] scroll-mt-[68px]" style={{ background: "var(--forest)" }}>
       <Container className="py-10 max-[900px]:py-8">
         <div className="flex flex-wrap justify-center items-start gap-x-8 gap-y-8">
   {stats.map((stat, i) => (

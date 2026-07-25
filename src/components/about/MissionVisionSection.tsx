@@ -18,7 +18,7 @@ export default function MissionVisionSection({ data }: { data: MissionVisionData
   const hasVision = !!(data.visionLabel || data.visionText);
 
   return (
-    <section style={{ background: "var(--rose)" }}>
+    <section id="mission-vision" className="scroll-mt-[68px]" style={{ background: "var(--rose)" }}>
       <Container className="py-20 max-[900px]:py-14">
         {(data.eyebrowText || data.heading || data.headingEmphasis) && (
           <Reveal className="text-center mb-12">

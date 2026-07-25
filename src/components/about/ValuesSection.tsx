@@ -15,7 +15,7 @@ export default function ValuesSection({ data }: { data: ValuesData | null }) {
   const valueItems = data.valueItems ?? [];
 
   return (
-    <section style={{ background: "var(--linen)" }}>
+    <section id="values" className="scroll-mt-[68px]" style={{ background: "var(--linen)" }}>
       <Container className="py-20 max-[900px]:py-14">
         {(data.eyebrowText || data.heading || data.headingEmphasis || data.description) && (
           <Reveal className="text-center mb-12">

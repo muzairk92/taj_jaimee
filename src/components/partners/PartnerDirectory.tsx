@@ -32,7 +32,7 @@ export default function PartnerDirectory({ data }: { data: DirectoryData | null 
   const partners = data.partners ?? [];
 
   return (
-    <section className="bg-white">
+    <section id="directory" className="bg-white scroll-mt-[68px]">
       <Container className="py-20 max-[900px]:py-14">
         {(data.eyebrowText || data.heading) && (
           <Reveal className="text-center mb-12">

@@ -25,7 +25,7 @@ export default function CtaSection({ data }: { data: FinalCtaData | null }) {
   return (
     <section
       id="contact"
-      className="relative overflow-hidden"
+      className="relative overflow-hidden scroll-mt-[68px]"
       style={{ background: "var(--forest)" }}
     >
       <div

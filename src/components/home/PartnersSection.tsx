@@ -50,7 +50,7 @@ export default function PartnersSection({ data }: { data: PartnerEcosystemData |
   const row2 = partners.slice(half);
 
   return (
-    <section id="partners" style={{ background: "var(--forest)" }}>
+    <section id="partners" className="scroll-mt-[68px]" style={{ background: "var(--forest)" }}>
       <Container className="py-20 max-[900px]:py-14">
         <Reveal>
           {data.eyebrowText && (

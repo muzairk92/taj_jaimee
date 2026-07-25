@@ -33,7 +33,7 @@ export default function TeamSection({ data }: { data: TeamData | null }) {
   const founderPhotoSrc = data.founderPhoto?.node?.sourceUrl ?? null;
 
   return (
-    <section className="bg-white">
+    <section id="team" className="bg-white scroll-mt-[68px]">
       <Container className="py-20 max-[900px]:py-14">
         {(data.eyebrowText || data.heading || data.headingEmphasis || data.description) && (
           <Reveal className="text-center mb-12">

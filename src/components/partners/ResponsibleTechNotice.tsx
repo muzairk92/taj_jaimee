@@ -10,7 +10,7 @@ export default function ResponsibleTechNotice({ data }: { data: ResponsibleTechN
   if (!data) return null;
 
   return (
-    <section style={{ background: "var(--forest)" }}>
+    <section id="responsible-tech" className="scroll-mt-[68px]" style={{ background: "var(--forest)" }}>
       <Container className="py-16 max-[900px]:py-12">
         <Reveal
           className="why-card max-w-[820px] mx-auto text-center rounded-[8px] p-10 max-[900px]:p-7"

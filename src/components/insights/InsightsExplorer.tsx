@@ -51,7 +51,7 @@ export default function InsightsExplorer({ categoriesData, insights }: InsightsE
   return (
     <>
       {(hasHeader || categories.length > 0) && (
-        <section style={{ background: "var(--rose)" }}>
+        <section id="categories" className="scroll-mt-[68px]" style={{ background: "var(--rose)" }}>
           <Container className="py-20 max-[900px]:py-14">
             {hasHeader && (
               <Reveal className="text-center mb-12">
@@ -121,7 +121,7 @@ export default function InsightsExplorer({ categoriesData, insights }: InsightsE
         </section>
       )}
 
-      <section id="articles" className="bg-white">
+      <section id="articles" className="bg-white scroll-mt-[68px]">
         <Container className="py-20 max-[900px]:py-14">
           <Reveal className="text-center mb-12">
             <p className="text-[11px] tracking-[0.22em] uppercase text-[#b8924a] mb-3 font-medium">

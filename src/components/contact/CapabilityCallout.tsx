@@ -13,7 +13,7 @@ export default function CapabilityCallout({ data }: { data: CapabilityCalloutDat
   if (!data.text && !hasButton) return null;
 
   return (
-    <section style={{ background: "var(--forest)" }}>
+    <section id="capability-callout" className="scroll-mt-[68px]" style={{ background: "var(--forest)" }}>
       <Container className="py-12 max-[900px]:py-10">
         <Reveal
           className="why-card max-w-[820px] mx-auto rounded-[8px] p-8 flex items-center justify-between gap-6 flex-wrap max-[640px]:flex-col max-[640px]:items-start"

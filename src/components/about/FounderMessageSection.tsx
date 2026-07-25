@@ -12,7 +12,7 @@ export default function FounderMessageSection({ data }: { data: FounderMessageDa
   if (!data) return null;
 
   return (
-    <section className="relative overflow-hidden text-center" style={{ background: "var(--forest)" }}>
+    <section id="founder-message" className="relative overflow-hidden text-center scroll-mt-[68px]" style={{ background: "var(--forest)" }}>
       <div
         className="absolute inset-0 pointer-events-none"
         style={{

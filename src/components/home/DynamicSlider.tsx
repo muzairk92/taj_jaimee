@@ -113,7 +113,8 @@ export default function DynamicSlider({ data }: { data: DynamicSliderData | null
 
   return (
     <section
-      className="max-w-[1920px] mx-auto min-h-[660px] md:min-h-[720px] relative overflow-hidden flex flex-col justify-between py-12 md:py-20"
+      id="hero"
+      className="max-w-[1920px] mx-auto min-h-[660px] md:min-h-[720px] relative overflow-hidden flex flex-col justify-between py-12 md:py-20 scroll-mt-[68px]"
       style={{ background: "var(--midnight)" }}
     >
       {/* Background Layer with Cross-fade */}

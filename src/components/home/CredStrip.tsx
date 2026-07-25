@@ -16,7 +16,7 @@ export default function CredStrip({ data }: { data: AwardsBarData | null }) {
   if (!awards?.length) return null;
 
   return (
-    <div className="border-t border-b border-[#c8b8a2]" style={{ background: "var(--linen)" }}>
+    <div id="awards" className="border-t border-b border-[#c8b8a2] scroll-mt-[68px]" style={{ background: "var(--linen)" }}>
       <Container className="py-8">
         <div className="flex items-center justify-center gap-10 flex-wrap max-[900px]:flex-col max-[900px]:items-start max-[900px]:gap-6">
           {awards.map((award, i) => (

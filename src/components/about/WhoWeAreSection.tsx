@@ -18,7 +18,7 @@ export default function WhoWeAreSection({ data }: { data: WhoWeAreData | null })
   const quickFacts = data.quickFacts ?? [];
 
   return (
-    <section className="bg-white">
+    <section id="who-we-are" className="bg-white scroll-mt-[68px]">
       <Container className="py-20 max-[900px]:py-14">
         <div className="grid grid-cols-2 gap-16 items-start max-[900px]:grid-cols-1 max-[900px]:gap-10">
           <Reveal>

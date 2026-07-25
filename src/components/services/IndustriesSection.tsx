@@ -21,7 +21,7 @@ export default function IndustriesSection({ data }: { data: IndustriesData | nul
   if (!hasContent) return null;
 
   return (
-    <section style={{ background: "var(--linen)" }}>
+    <section id="industries" className="scroll-mt-[68px]" style={{ background: "var(--linen)" }}>
       <Container className="py-20 max-[900px]:py-14">
         {hasHeader && (
           <Reveal className="text-center mb-12">

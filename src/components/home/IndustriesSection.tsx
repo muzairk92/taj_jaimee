@@ -15,7 +15,7 @@ export default function IndustriesSection({ data }: { data: IndustriesData | nul
   const industries = data.industries ?? [];
 
   return (
-    <section style={{ background: "var(--midnight)" }}>
+    <section id="industries" className="scroll-mt-[68px]" style={{ background: "var(--midnight)" }}>
       <Container className="py-20 max-[900px]:py-14">
         <Reveal>
           {data.eyebrowText && (

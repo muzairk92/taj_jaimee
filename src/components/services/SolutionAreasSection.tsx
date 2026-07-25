@@ -13,7 +13,7 @@ export default function SolutionAreasSection({ data }: { data: SolutionAreasData
   if (!data.heading && solutionAreas.length === 0) return null;
 
   return (
-    <section className="bg-white">
+    <section id="solution-areas" className="bg-white scroll-mt-[68px]">
       <Container className="py-20 max-[900px]:py-14">
         {data.heading && (
           <Reveal className="text-center mb-12">

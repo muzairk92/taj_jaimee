@@ -24,7 +24,7 @@ export default function NetworkSection({ data }: { data: AdvisoryNetworkData | n
   const members = data.networkMembers ?? [];
 
   return (
-    <section style={{ background: "var(--midnight)" }}>
+    <section id="network" className="scroll-mt-[68px]" style={{ background: "var(--midnight)" }}>
       <Container className="py-20 max-[900px]:py-14">
         {(data.eyebrowText || data.heading || data.headingEmphasis) && (
           <Reveal className="text-center mb-10">

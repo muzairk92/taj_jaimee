@@ -22,7 +22,7 @@ export default function ArticleHeader({
 }: ArticleHeaderProps) {
   const formattedDate = formatInsightDate(publishDate);
   return (
-    <section style={{ background: "var(--midnight)" }}>
+    <section id="article-header" className="scroll-mt-[68px]" style={{ background: "var(--midnight)" }}>
       <Container className="py-20 max-[900px]:py-14">
         <Reveal className="max-w-[720px] mx-auto">
           <Link

@@ -24,7 +24,7 @@ export default function FounderProfileSection({ data }: { data: FounderProfileDa
   const hasTestimonial = !!(data.testimonialQuote || data.testimonialAttribution1 || data.testimonialAttribution2);
 
   return (
-    <section id="founder-profile" style={{ background: "var(--linen)" }}>
+    <section id="founder-profile" className="scroll-mt-[68px]" style={{ background: "var(--linen)" }}>
       <Container className="py-20 max-[900px]:py-14">
         <div className="grid grid-cols-[1.15fr_0.85fr] gap-16 items-start max-[900px]:grid-cols-1 max-[900px]:gap-10">
           <Reveal>

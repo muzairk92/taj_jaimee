@@ -20,7 +20,7 @@ export default function InsightsSection({ data }: { data: InsightsData | null })
   const articles = data.articles ?? [];
 
   return (
-    <section id="insights" className="bg-white">
+    <section id="insights" className="bg-white scroll-mt-[68px]">
       <Container className="py-20 max-[900px]:py-14">
         <Reveal>
           {data.eyebrowText && (

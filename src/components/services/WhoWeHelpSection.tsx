@@ -15,7 +15,7 @@ export default function WhoWeHelpSection({ data }: { data: WhoWeHelpData | null 
   if (!hasHeader && audiences.length === 0) return null;
 
   return (
-    <section style={{ background: "var(--midnight)" }}>
+    <section id="who-we-help" className="scroll-mt-[68px]" style={{ background: "var(--midnight)" }}>
       <Container className="py-20 max-[900px]:py-14">
         <div className="grid grid-cols-2 gap-16 items-center max-[900px]:grid-cols-1 max-[900px]:gap-10">
           {hasHeader && (

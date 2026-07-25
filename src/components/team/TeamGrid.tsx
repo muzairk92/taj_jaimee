@@ -16,7 +16,7 @@ export default function TeamGrid({ members }: { members: TeamMemberNode[] }) {
   if (members.length === 0) return null;
 
   return (
-    <section className="bg-white">
+    <section id="team-grid" className="bg-white scroll-mt-[68px]">
       <Container className="py-20 max-[900px]:py-14">
         <div className="flex flex-wrap justify-center gap-6">
           {members.map((member, i) => (

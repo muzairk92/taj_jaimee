@@ -37,7 +37,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         readTime={fields.readTime}
         publishDate={fields.publishDate}
       />
-      <section className="bg-white">
+      <section id="article-content" className="bg-white scroll-mt-[68px]">
         <Container className="py-16 max-[900px]:py-10">
           <ArticleContent body={body} />
         </Container>

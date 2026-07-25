@@ -13,7 +13,7 @@ export default function InsightsHero({ data }: { data: InsightsHeroData | null }
   if (!hasContent) return null;
 
   return (
-    <section className="relative overflow-hidden text-center" style={{ background: "var(--midnight)" }}>
+    <section id="hero" className="relative overflow-hidden text-center scroll-mt-[68px]" style={{ background: "var(--midnight)" }}>
       <div
         className="absolute inset-0 pointer-events-none"
         style={{

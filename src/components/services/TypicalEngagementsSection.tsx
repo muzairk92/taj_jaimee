@@ -18,7 +18,7 @@ export default function TypicalEngagementsSection({ data }: { data: EngagementsD
   if (!hasHeader && engagements.length === 0 && !hasButton) return null;
 
   return (
-    <section className="bg-white">
+    <section id="engagements" className="bg-white scroll-mt-[68px]">
       <Container className="py-20 max-[900px]:py-14">
         {hasHeader && (
           <Reveal className="text-center mb-12">

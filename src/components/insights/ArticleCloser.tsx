@@ -12,7 +12,7 @@ export default function ArticleCloser({ text, ctaText, ctaUrl }: ArticleCloserPr
   if (!text && !hasButton) return null;
 
   return (
-    <section style={{ background: "var(--forest)" }}>
+    <section id="article-closer" className="scroll-mt-[68px]" style={{ background: "var(--forest)" }}>
       <Container className="py-12 max-[900px]:py-10">
         <Reveal className="max-w-[720px] mx-auto flex items-center justify-between gap-6 flex-wrap max-[640px]:flex-col max-[640px]:items-start">
           {text && (

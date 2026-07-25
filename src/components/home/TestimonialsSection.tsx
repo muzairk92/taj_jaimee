@@ -21,7 +21,7 @@ export default function TestimonialsSection({ data }: { data: TestimonialsData |
   const testimonials = data.testimonials ?? [];
 
   return (
-    <section style={{ background: "var(--linen)" }}>
+    <section id="testimonials" className="scroll-mt-[68px]" style={{ background: "var(--linen)" }}>
       <Container className="py-20 max-[900px]:py-14">
         <Reveal>
           {data.eyebrowText && (

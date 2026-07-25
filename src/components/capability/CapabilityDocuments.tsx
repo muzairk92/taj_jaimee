@@ -22,7 +22,7 @@ export default function CapabilityDocuments({ data }: { data: CapabilityDocument
   if (!hasHeader && documents.length === 0) return null;
 
   return (
-    <section className="bg-white">
+    <section id="documents" className="bg-white scroll-mt-[68px]">
       <Container className="py-20 max-[900px]:py-14">
         {hasHeader && (
           <Reveal className="text-center mb-12">

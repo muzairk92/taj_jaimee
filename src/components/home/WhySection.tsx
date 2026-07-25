@@ -12,7 +12,7 @@ export default function WhySection({ data }: { data: FeatureCardsData | null }) 
   if (!data) return null;
 
   return (
-    <section id="about" style={{ background: "var(--linen)" }}>
+    <section id="about" className="scroll-mt-[68px]" style={{ background: "var(--linen)" }}>
       <Container className="py-20 max-[900px]:py-14">
         <Reveal>
           {data.eyebrowText && (

@@ -12,7 +12,7 @@ export default function ServicesSection({ data }: { data: ServicesPillarsData | 
   if (!data) return null;
 
   return (
-    <section id="services" style={{ background: "var(--linen)" }}>
+    <section id="services" className="scroll-mt-[68px]" style={{ background: "var(--linen)" }}>
       <Container className="py-20 max-[900px]:py-14">
         <Reveal>
           {data.eyebrowText && (

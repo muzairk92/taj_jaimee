@@ -10,7 +10,7 @@ export default function TaglineBar({ data }: { data: TaglineBarData | null }) {
   if (!items?.length) return null;
 
   return (
-    <div style={{ background: "var(--rose)" }}>
+    <div id="tagline" className="scroll-mt-[68px]" style={{ background: "var(--rose)" }}>
       <Container className="py-3 max-[900px]:py-2.5">
         <Reveal className="flex items-center justify-center gap-6 flex-wrap max-[900px]:gap-3">
           {items.map((item, i) => (
