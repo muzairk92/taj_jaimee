@@ -68,7 +68,13 @@ export const GET_ABOUT_PAGE = gql`
             eyebrowText
             heading
             headingEmphasis
+            tagline
+            introParagraph1
+            introParagraph2
             networkQuote
+            networkQuoteAttribution
+            membersHeading
+            membersHeadingEmphasis
             networkMembers {
               initials
               name
@@ -77,6 +83,23 @@ export const GET_ABOUT_PAGE = gql`
               ctaText
               ctaUrl
             }
+            processHeading
+            processHeadingEmphasis
+            processParagraph1
+            processParagraph2
+            processParagraph3
+            mattersHeading
+            mattersHeadingEmphasis
+            mattersParagraph1
+            mattersParagraph2
+            stats {
+              number
+              label
+            }
+            ctaHeading
+            ctaDescription
+            ctaText
+            ctaUrl
           }
           ... on AboutSectionsAboutSectionsFounderMessageLayout {
             messageText
